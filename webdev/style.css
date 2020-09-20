@@ -11,6 +11,7 @@ a {
     background: #000000;
     width: 1600px;
     font-family: Roboto;
+    color: #373737;
 }
 
 .header__site-name {
@@ -82,14 +83,6 @@ a {
     margin: 6px 273px;
 }
 
-.your-life__btn:hover {
-    background: #009CC2;
-}
-
-.your-life__btn:focus {
-    outline: none;
-}
-
 .social {
     height: 20px;
     width: 170px;
@@ -122,7 +115,6 @@ a {
     width: 390px;
     font-size: 24px;
     letter-spacing: 1.18px;
-    color: #373737;
     text-transform: uppercase;
     line-height: 29px;
 }
@@ -149,6 +141,95 @@ a {
     text-transform: uppercase;
     border: none;
     cursor: pointer;
+}
+
+.our-community {
+    height: 504px;
+    display: flex;
+    flex-direction: column;
+    background: #F5F6F7;
+}
+
+.slider-btns {
+    margin: 84px 0 22px 1248px;
+    width: 83px;
+    height: 14px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.slider-btns__arrow {
+    cursor: pointer;
+}
+
+.slider-btns__arrow:hover {
+    transform: scale(1.2, 1.2);
+}
+
+.slider-btns__number-start {
+    margin: 0 4px 0 14px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.slider-btns__number-finish {
+    margin: 0 14px 0 4px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.slider {
+    display: flex;
+}
+
+.slider__user {
+    margin: 35px 141px 0 270px;
+    height: 175px;
+    width: 295px;
+    text-align: center;
+}
+
+.slider__user-title {
+    margin: 14.4px;
+    font-size: 16px;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+}
+
+.slider__user-text {
+    font-size: 14px;
+    color: #4E4E4E;
+    line-height: 19.9px;
+}
+
+.slider__image {
+    width: 407px;
+    height: 244px;
+    float: left;
+}
+
+.image1 {
+    background: url("assets/images/slider-item.png")
+}
+
+.image2 {
+    margin: 0 30px 0 30px;
+    background: url("assets/images/slider-item1.png")
+}
+
+.image3 {
+    width: 20px;
+    background: url(assets/images/slider-item2.png);
+}
+
+.btn-getStarted:hover {
+    background: #009CC2;
+}
+
+.btn-getStarted:focus {
+    outline: none;
 }
 
 @font-face {
