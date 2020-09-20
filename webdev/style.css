@@ -304,6 +304,63 @@ a {
     outline: none;
 }
 
+.download {
+    height: 464px;
+    display: flex;
+    justify-content: center;
+    background: #F5F6F7;
+}
+
+.download__container {
+    width: 480px;
+    margin-top: 119px;
+    text-align: center;
+}
+
+.download__title {
+    font-size: 24px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.download__information {
+    margin: 21px 0 31px 2px;
+    line-height: 19px;
+    font-size: 14px;
+    color: #4E4E4E;
+}
+
+.download__btns-box {
+    display: flex;
+}
+
+.download__btn {
+    padding: 0;
+    width: 186px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    background: #00AFDB;
+    color: #ffffff;
+    font-family: Roboto;
+    font-size: 14px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+}
+
+.download__btn-apple {
+    margin: 0px 19px 0 18px;
+}
+
+.download__btn-android {
+    margin: 0px 19px 0 15px;
+}
+
+.download__btn:first-child {
+    margin: 0 30px 0 39px;
+}
+
 
 .btn-getStarted:hover {
     background: #009CC2;
