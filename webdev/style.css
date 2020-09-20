@@ -5,6 +5,8 @@
 
 a {
     text-decoration: none;
+    color: #ffffff;
+    cursor: pointer;
 }
 
 .container {
@@ -349,6 +351,19 @@ a {
     cursor: pointer;
 }
 
+.download__btn:hover {
+    cursor: pointer;
+    background: #009CC2;
+}
+
+.download__btn p:hover {
+    cursor: pointer;
+}
+
+.download__btn img:hover {
+    cursor: pointer;
+}
+
 .download__btn-apple {
     margin: 0px 19px 0 18px;
 }
@@ -361,6 +376,46 @@ a {
     margin: 0 30px 0 39px;
 }
 
+.footer {
+    height: 185px;
+}
+
+.footer__container {
+    margin: 59px 0px 0px 159px;
+    display: flex;
+    align-items: center;
+}
+
+.footer__menu-list {
+    padding: 0;
+    display: flex;
+}
+
+.footer__menu-box {
+    display: block;
+}
+
+.footer__menu-link {
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.footer__logo-link {
+    margin: 0 448px 0 383px;
+}
+
+.footer__logo-img:hover {
+    cursor: pointer;
+}
+
+.footer__copyright {
+    font-size: 14px;
+    color: #818181;
+}
+
+.separator {
+    margin: 0px 18px 0 21px;
+}
 
 .btn-getStarted:hover {
     background: #009CC2;
