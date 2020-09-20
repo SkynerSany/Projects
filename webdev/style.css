@@ -1,0 +1,431 @@
+* {
+    margin: 0;
+    cursor: default;
+}
+
+a {
+    text-decoration: none;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.container {
+    background: #000000;
+    width: 1600px;
+    font-family: Roboto;
+    color: #373737;
+}
+
+.header__site-name {
+    display: none;
+}
+
+.navigation__menu {
+    height: 95px;
+    display: flex;
+    margin-left: 419px;
+}
+
+.navigation__menu-box {
+    display: block;
+    margin: 39px 42px 37px 43px;
+}
+
+.navigation__menu-box_active {
+    border-bottom: 1px solid #ffffff;
+}
+
+.navigation__menu-box:nth-child(3):hover {
+    border: none;
+}
+
+.navigation__menu-box:hover {
+    border-bottom: 1px solid #ffffff;
+}
+
+.navigation__menu-text {
+    color: #ffffff;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.navigation__menu-img {
+    margin: -14px 15px;
+    cursor: pointer;
+}
+
+.your-life {
+    height: 649px;
+    display: flex;
+    flex-direction: column;
+    background-image: url("assets/images/bg-image.png");
+    background-position: bottom;
+}
+
+.your-life__text-box {
+    margin: 133px 417px 0 435px;
+    color: #ffffff;
+}
+
+.your-life__title {
+    font-size: 64px;
+    text-transform: uppercase;
+    letter-spacing: 4.7px;
+}
+
+.your-life__information {
+    margin: 22px 141px 24px 123px;
+    letter-spacing: -0.08px;
+    text-align: center;
+    line-height: 24px;
+    font-size: 18px;
+}
+
+.your-life__btn {
+    margin: 6px 273px;
+}
+
+.social {
+    height: 20px;
+    width: 170px;
+    margin: 177px 715px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.social__link {
+    display: flex;
+    float: left;
+}
+
+.social__img {
+    cursor: pointer;
+}
+
+.rappresent {
+    height: 842px;
+    display: flex;
+    background: #ffffff;
+}
+
+.text-box {
+    width: 407px;
+    margin: 294px 249px 294px 268px;
+}
+
+.text-box__title {
+    width: 390px;
+    font-size: 24px;
+    letter-spacing: 1.18px;
+    text-transform: uppercase;
+    line-height: 29px;
+}
+
+.text-box__information {
+    margin: 20px 0 30px 0;
+    font-size: 14px;
+    color: #4E4E4E;
+    line-height: 20px;
+}
+
+.img-box {
+    margin-top: 120px;
+}
+
+.btn-getStarted {
+    padding: 13px 42px;
+    width: 184px;
+    height: 46px;
+    background: #00AFDB;
+    color: #ffffff;
+    font-family: Roboto;
+    font-size: 14px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+}
+
+.our-community {
+    height: 504px;
+    display: flex;
+    flex-direction: column;
+    background: #F5F6F7;
+}
+
+.slider-btns {
+    margin: 84px 0 22px 1248px;
+    width: 83px;
+    height: 14px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.slider-btns__arrow {
+    cursor: pointer;
+}
+
+.slider-btns__arrow:hover {
+    transform: scale(1.2, 1.2);
+}
+
+.slider-btns__number-start {
+    margin: 0 4px 0 14px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.slider-btns__number-finish {
+    margin: 0 14px 0 4px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.slider {
+    display: flex;
+}
+
+.slider__user {
+    margin: 35px 141px 0 270px;
+    height: 175px;
+    width: 295px;
+    text-align: center;
+}
+
+.slider__user-title {
+    margin: 14.4px;
+    font-size: 16px;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+}
+
+.slider__user-text {
+    font-size: 14px;
+    color: #4E4E4E;
+    line-height: 19.9px;
+}
+
+.slider__image {
+    width: 407px;
+    height: 244px;
+    float: left;
+}
+
+.image1 {
+    background: url("assets/images/slider-item.png")
+}
+
+.image2 {
+    margin: 0 30px 0 30px;
+    background: url("assets/images/slider-item1.png")
+}
+
+.image3 {
+    width: 20px;
+    background: url(assets/images/slider-item2.png);
+}
+
+.implement {
+    height: 842px;
+    display: flex;
+    background: #ffffff;
+}
+
+.implement__img-box {
+    margin-left: 269px;
+}
+
+.implement__text-box {
+    margin: 319px 248px 336px 137px;
+}
+
+.sign-up {
+    height: 524px;
+    display: flex;
+    justify-content: center;
+    background: url("assets/images/pexels-christina-morillo-1181675 1.png");
+    text-align: center;
+}
+
+.sign-up__container {
+    margin-top: 198px;
+    width: 408px;
+}
+
+.sign-up__input {
+    position: absolute;
+}
+
+.sign-up__text {
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-size: 24px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+.sign-up__input-text {
+    padding-left: 25px;
+    width: 336px;
+    height: 44px;
+    border: none;
+    font-family: Roboto;
+}
+
+.sign-up__input-text:hover {
+    cursor: text;
+}
+
+.sign-up__input-text:focus {
+    outline: none;
+}
+
+.sign-up__input-button {
+    position: absolute;
+    padding: 17px 16px 12px 19px;
+    left: 340px;
+    top: 0px;
+    width: 66px;
+    height: 46px;
+    border: none;
+    background-color: #00AFDB;
+}
+
+.sign-up__input-button:hover {
+    cursor: pointer;
+    background: #009CC2;
+}
+
+.sign-up__icon-img:hover {
+    cursor: pointer;
+}
+
+.sign-up__input-button:focus {
+    outline: none;
+}
+
+.download {
+    height: 464px;
+    display: flex;
+    justify-content: center;
+    background: #F5F6F7;
+}
+
+.download__container {
+    width: 480px;
+    margin-top: 119px;
+    text-align: center;
+}
+
+.download__title {
+    font-size: 24px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.download__information {
+    margin: 21px 0 31px 2px;
+    line-height: 19px;
+    font-size: 14px;
+    color: #4E4E4E;
+}
+
+.download__btns-box {
+    display: flex;
+}
+
+.download__btn {
+    padding: 0;
+    width: 186px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    background: #00AFDB;
+    color: #ffffff;
+    font-family: Roboto;
+    font-size: 14px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+}
+
+.download__btn:hover {
+    cursor: pointer;
+    background: #009CC2;
+}
+
+.download__btn p:hover {
+    cursor: pointer;
+}
+
+.download__btn img:hover {
+    cursor: pointer;
+}
+
+.download__btn-apple {
+    margin: 0px 19px 0 18px;
+}
+
+.download__btn-android {
+    margin: 0px 19px 0 15px;
+}
+
+.download__btn:first-child {
+    margin: 0 30px 0 39px;
+}
+
+.footer {
+    height: 185px;
+}
+
+.footer__container {
+    margin: 59px 0px 0px 159px;
+    display: flex;
+    align-items: center;
+}
+
+.footer__menu-list {
+    padding: 0;
+    display: flex;
+}
+
+.footer__menu-box {
+    display: block;
+}
+
+.footer__menu-link {
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.footer__logo-link {
+    margin: 0 448px 0 383px;
+}
+
+.footer__logo-img:hover {
+    cursor: pointer;
+}
+
+.footer__copyright {
+    font-size: 14px;
+    color: #818181;
+}
+
+.separator {
+    margin: 0px 18px 0 21px;
+}
+
+.btn-getStarted:hover {
+    background: #009CC2;
+}
+
+.btn-getStarted:focus {
+    outline: none;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url(assets/fonts/Roboto-Medium.ttf);
+}
