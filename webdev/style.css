@@ -356,7 +356,7 @@ a {
     background: #009CC2;
 }
 
-.download__btn p:hover {
+.download__btn span:hover {
     cursor: pointer;
 }
 
