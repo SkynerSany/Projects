@@ -106,12 +106,12 @@ a {
     background: #ffffff;
 }
 
-.rappresent__text-box {
+.text-box {
     width: 407px;
     margin: 294px 249px 294px 268px;
 }
 
-.rappresent__title {
+.text-box__title {
     width: 390px;
     font-size: 24px;
     letter-spacing: 1.18px;
@@ -119,14 +119,14 @@ a {
     line-height: 29px;
 }
 
-.rappresent__information {
+.text-box__information {
     margin: 20px 0 30px 0;
     font-size: 14px;
     color: #4E4E4E;
     line-height: 20px;
 }
 
-.rappresent__img-box {
+.img-box {
     margin-top: 120px;
 }
 
@@ -223,6 +223,87 @@ a {
     width: 20px;
     background: url(assets/images/slider-item2.png);
 }
+
+.implement {
+    height: 842px;
+    display: flex;
+    background: #ffffff;
+}
+
+.implement__img-box {
+    margin-left: 269px;
+}
+
+.implement__text-box {
+    margin: 319px 248px 336px 137px;
+}
+
+.sign-up {
+    height: 524px;
+    display: flex;
+    justify-content: center;
+    background: url("assets/images/pexels-christina-morillo-1181675 1.png");
+    text-align: center;
+}
+
+.sign-up__container {
+    margin-top: 198px;
+    width: 408px;
+}
+
+.sign-up__input {
+    position: absolute;
+}
+
+.sign-up__text {
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-size: 24px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+.sign-up__input-text {
+    padding-left: 25px;
+    width: 336px;
+    height: 44px;
+    border: none;
+    font-family: Roboto;
+}
+
+.sign-up__input-text:hover {
+    cursor: text;
+}
+
+.sign-up__input-text:focus {
+    outline: none;
+}
+
+.sign-up__input-button {
+    position: absolute;
+    padding: 17px 16px 12px 19px;
+    left: 340px;
+    top: 0px;
+    width: 66px;
+    height: 46px;
+    border: none;
+    background-color: #00AFDB;
+}
+
+.sign-up__input-button:hover {
+    cursor: pointer;
+    background: #009CC2;
+}
+
+.sign-up__icon-img:hover {
+    cursor: pointer;
+}
+
+.sign-up__input-button:focus {
+    outline: none;
+}
+
 
 .btn-getStarted:hover {
     background: #009CC2;
