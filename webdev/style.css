@@ -3,6 +3,10 @@
     cursor: default;
 }
 
+a {
+    text-decoration: none;
+}
+
 .container {
     background: #000000;
     width: 1600px;
@@ -35,12 +39,78 @@
     color: #ffffff;
     font-family: 'Roboto';
     font-size: 14px;
-    text-decoration: none;
     cursor: pointer;
 }
 
 .navigation__menu-img {
     margin: -14px 15px;
+    cursor: pointer;
+}
+
+.your-life {
+    height: 649px;
+    display: flex;
+    flex-direction: column;
+    background-image: url("assets/images/bg-image.png");
+    background-position: bottom;
+}
+
+.your-life__text-box {
+    margin: 133px 417px 0 435px;
+    color: #ffffff;
+    font-family: Roboto;
+}
+
+.your-life__title {
+    font-size: 64px;
+    text-transform: uppercase;
+    letter-spacing: 4.7px;
+}
+
+.your-life__information {
+    margin: 22px 141px 24px 123px;
+    letter-spacing: -0.08px;
+    text-align: center;
+    line-height: 24px;
+    font-size: 18px;
+}
+
+.your-life__btn {
+    margin: 6px 273px;
+    padding: 13px 42px;
+    width: 184px;
+    height: 46px;
+    background: #00AFDB;
+    color: #ffffff;
+    font-family: Roboto;
+    font-size: 14px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+}
+
+.your-life__btn:hover {
+    background: #009CC2;
+}
+
+.your-life__btn:focus {
+    outline: none;
+}
+
+.social {
+    height: 20px;
+    width: 170px;
+    margin: 177px 715px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.social__link {
+    display: flex;
+    float: left;
+}
+
+.social__img {
     cursor: pointer;
 }
 
