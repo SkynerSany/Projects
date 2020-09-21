@@ -356,6 +356,10 @@ a {
     background: #009CC2;
 }
 
+.download__btn:focus {
+    outline: none;
+}
+
 .download__btn span:hover {
     cursor: pointer;
 }
