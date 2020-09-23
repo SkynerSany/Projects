@@ -20,9 +20,13 @@ class Calculator {
       if (number === '.' && this.currentOperand.includes('.')) return;
       this.currentOperand = this.currentOperand.toString() + number.toString();
     }
+
+    isNegativeNumber(operation) {
+      if (this.currentOperand === '' && operation === '-') return true;
+    }
   
     chooseOperation(operation) {
-      if (this.currentOperand === '') return;
+      if (this.currentOperand === '' || (this.currentOperand === '-' && operation === '-')) return;
       if (this.previousOperand !== '') {
         this.compute();
       }
@@ -38,7 +42,8 @@ class Calculator {
       let computation;
       const prev = parseFloat(this.previousOperand);
       const current = parseFloat(this.currentOperand);
-      const maxLength = Math.max(('' + prev).length, ('' + current).length) - 1;
+      let maxLength = Math.max(('' + prev).length, ('' + current).length) - 1;
+      maxLength = this.isDecimalDigits ? maxLength - 1 : maxLength;
       if (this.operation !== '√' && (isNaN(prev) || isNaN(current))) return;
       switch (this.operation) {
         case '+':
@@ -51,13 +56,13 @@ class Calculator {
           computation = (prev * current).toFixed(maxLength);
           break
         case '÷':
-          computation = (prev / current).toFixed(maxLength);
+          computation = (prev / current).toFixed(maxLength + 1);
           break
         case 'xn':
           computation = Math.pow(prev, current);
           break
         case '√':
-          computation = Math.sqrt(prev);
+          computation = (prev > 0) ? Math.sqrt(prev) : "Введены неверные данные";
           break
         default:
           return;
@@ -79,15 +84,18 @@ class Calculator {
         integerDisplay = integerDigits.toLocaleString('en', { maximumFractionDigits: 0 })
       }
       if (decimalDigits != null) {
+        this.isDecimalDigits = true;
         return `${integerDisplay}.${decimalDigits}`
       } else {
+        this.isDecimalDigits = false;
         return integerDisplay
       }
     }
   
     updateDisplay() {
-      this.currentOperandTextElement.innerText =
-        this.getDisplayNumber(this.currentOperand)
+      this.currentOperandTextElement.innerText = (this.currentOperand === '-' 
+        || this.currentOperand === "Введены неверные данные") ? 
+            this.currentOperand : this.getDisplayNumber(this.currentOperand); 
       if (this.operation != null && this.operation !== 'xn' && this.operation !== '√') {
         this.previousOperandTextElement.innerText =
           `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
@@ -130,7 +138,8 @@ class Calculator {
   
   operationButtons.forEach(button => {
     button.addEventListener('click', () => {
-      calculator.chooseOperation(button.innerText);
+      calculator.isNegativeNumber(button.innerText) ? calculator.appendNumber(button.innerText)
+        : calculator.chooseOperation(button.innerText);
       calculator.updateDisplay();
     })
   })
