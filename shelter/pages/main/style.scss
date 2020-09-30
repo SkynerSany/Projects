@@ -3,9 +3,17 @@
     cursor: default;
 }
 
+$color-title-white: #ffffff;
+$color-title-black: #545454;
+$color-description-white: #CDCDCD;
+$color-description-black: #4C4C4C;
+$color-btn-default: #F1CDB3;
+$color-btn-hover: #FDDCC4;;
+
 .container {
     margin: 0 auto;
     width: 78.1vw;
+    display: flex;
 }
 
 .header__container {
@@ -15,7 +23,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #ffffff;
+    color: $color-title-white;
 }
 
 .header__logo-title {
@@ -24,14 +32,14 @@
     font-weight: normal;
     line-height: 110%;
     letter-spacing: 2px;
-    color: #F1CDB3;
+    color: $color-btn-default;
 }
 
 .header__logo-description {
     margin-top: 0.7vw;
     padding-left: 0.2vw;
     font-family: Arial;
-    font-size: 0.85vw;
+    font-size: 0.82em;
     letter-spacing: 1.3px;
 }
 
@@ -44,8 +52,8 @@
     display: flex;
     justify-content: space-between;
     font-family: Arial;
-    font-size: 15px;
-    color: #CDCDCD;
+    font-size: 0.94em;
+    color: $color-description-white;
 }
 
 .header__menu-item {
@@ -53,18 +61,71 @@
     padding-bottom: 0.2vw;
     &:hover {
         cursor: pointer;
-        border-bottom: 0.2vw solid #F1CDB3;
+        border-bottom: 0.2vw solid $color-btn-default;
     }
 }
 
 .header__menu-item_active {
     color: #FAFAFA;
-    border-bottom: 0.2vw solid #F1CDB3;
+    border-bottom: 0.2vw solid $color-btn-default;
 }
 
 .not-only {
-    height: 59.1vw;
+    padding-top: 11.7vw;
     background: url('/shelter/assets/images/start-screen-gradient-background.png');
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.not-only__container {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.not-only__text {
+    margin-bottom: 5.86vw;
+    height: 24.2vw;
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.not-only__text-title {
+    margin-top: 0.66vw;
+    width: 20.2vw;
+    line-height: 1.3;
+    font-family: Georgia;
+    font-size: 2.75em;
+    color: $color-title-white;
+}
+
+.not-only__text-description {
+    line-height: 1.6;
+    font-family: Arial;
+    font-size: 15px;
+    color: $color-description-white;
+}
+
+.not-only__btn {
+    display: flex;
+    padding: 3.5% 0 0 9.9%;
+    width: 13.5vw;
+    height: 3.35vw;
+    background: $color-btn-default;
+    border: none;
+    border-radius: 2vw;
+    font-family: Georgia;
+    font-size: 1.06em;
+    letter-spacing: 0.06em;
+    color: #292929;
+    outline: none;
+    &:hover {
+        cursor: pointer;
+        background: $color-btn-hover;
+    }
+}
+
+.not-only__image-box {
+    height: 47.4vw;
 }
