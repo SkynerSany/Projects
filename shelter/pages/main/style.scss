@@ -8,7 +8,8 @@ $color-title-black: #545454;
 $color-description-white: #CDCDCD;
 $color-description-black: #4C4C4C;
 $color-btn-default: #F1CDB3;
-$color-btn-hover: #FDDCC4;;
+$color-btn-hover: #FDDCC4;
+$color-btn-text: #292929;
 
 .container {
     margin: 0 auto;
@@ -28,10 +29,10 @@ $color-btn-hover: #FDDCC4;;
 
 .header__logo-title {
     font-family: Georgia;
-    font-size: 2em;
+    font-size: 2.089vw;
     font-weight: normal;
-    line-height: 110%;
-    letter-spacing: 2px;
+    line-height: 2.3vw;
+    letter-spacing: 0.12vw;
     color: $color-btn-default;
 }
 
@@ -39,8 +40,8 @@ $color-btn-hover: #FDDCC4;;
     margin-top: 0.7vw;
     padding-left: 0.2vw;
     font-family: Arial;
-    font-size: 0.82em;
-    letter-spacing: 1.3px;
+    font-size: 0.86vw;
+    letter-spacing: 0.08vw;
 }
 
 .header__nav {
@@ -52,7 +53,7 @@ $color-btn-hover: #FDDCC4;;
     display: flex;
     justify-content: space-between;
     font-family: Arial;
-    font-size: 0.94em;
+    font-size: 0.98vw;
     color: $color-description-white;
 }
 
@@ -96,29 +97,32 @@ $color-btn-hover: #FDDCC4;;
     width: 20.2vw;
     line-height: 1.3;
     font-family: Georgia;
-    font-size: 2.75em;
+    font-size: 2.86vw;
     color: $color-title-white;
 }
 
-.not-only__text-description {
+.description {
     line-height: 1.6;
     font-family: Arial;
-    font-size: 15px;
+    font-size: 0.98vw;
+}
+
+.not-only__text-description {
     color: $color-description-white;
 }
 
 .not-only__btn {
     display: flex;
-    padding: 3.5% 0 0 9.9%;
+    padding: 1.09vw 0 0 2.94vw;
     width: 13.5vw;
     height: 3.35vw;
     background: $color-btn-default;
     border: none;
     border-radius: 2vw;
     font-family: Georgia;
-    font-size: 1.06em;
-    letter-spacing: 0.06em;
-    color: #292929;
+    font-size: 1.1vw;
+    letter-spacing: 0.07vw;
+    color: $color-btn-text;
     outline: none;
     &:hover {
         cursor: pointer;
@@ -128,4 +132,42 @@ $color-btn-hover: #FDDCC4;;
 
 .not-only__image-box {
     height: 47.4vw;
+}
+
+.about__container {
+    height: 38.3vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.about__image-box {
+    margin: 0 7.89vw 1vw 0;
+}
+
+.about__image {
+    height: 26.56vw;
+}
+
+.about__text-box {
+    margin-bottom: 1.2vw;
+    width: 27.99vw;
+    height: 24.7vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.about__text-title {
+    width: 24vw;
+    font-family: Georgia;
+    font-size: 2.28vw;
+    line-height: 2.95vw;
+    display: flex;
+    letter-spacing: 0.136vw;
+    color: $color-title-black;
+}
+
+.about__text-description {
+    color: $color-description-black;
+    letter-spacing: -0.001vw;
 }
