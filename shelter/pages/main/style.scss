@@ -164,14 +164,16 @@ button {
     justify-content: space-between;
 }
 
-.about__text-title {
-    width: 24vw;
+.title {
     font-family: Georgia;
     font-size: 2.28vw;
     line-height: 2.95vw;
-    display: flex;
     letter-spacing: 0.136vw;
     color: $color-title-black;
+}
+
+.about__text-title {
+    width: 24vw;
 }
 
 .about__text-description {
@@ -194,16 +196,10 @@ button {
     justify-content: space-between;
 }
 
-.our-friends__title-text {
+.our-friends__title {
     margin: 0.05vw 0 0 0.2vw;
     width: 26.05vw;
     text-align: center;
-    font-family: Georgia;
-    font-size: 2.28vw;
-    line-height: 2.94vw;
-    display: flex;
-    letter-spacing: 0.136vw;
-    color: $color-title-black;
 }
 
 .slider {
@@ -264,4 +260,63 @@ button {
     width: 16.9vw;
     height: 3.35vw;
     background: $color-btn-default;
+}
+
+.help {
+    height: 39.82vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.help__container {
+    height: 29.25vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.help__title {
+    width: 21vw;
+    text-align: center;
+}
+
+.help__items {
+    width: 66.89vw;
+    height: 19.6vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.help__items-box-1 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.help__items-box-2 {
+    margin: 0 0 1.3vw 5.5vw;
+    width: 56vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.help__item-box {
+    height: 7.3vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.help__item-img {
+    height: 3.9vw;
+}
+
+.help__item-description {
+    font-family: Georgia;
+    font-size: 1.3vw;
+    letter-spacing: 0.08vw;
+    color: $color-title-black;
 }
