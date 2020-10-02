@@ -22,6 +22,11 @@ button {
     }
 }
 
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .container {
     margin: 0 auto;
     width: 78.1vw;
@@ -45,6 +50,7 @@ button {
     line-height: 2.3vw;
     letter-spacing: 0.12vw;
     color: $color-btn-default;
+    cursor: pointer;
 }
 
 .header__logo-description {
@@ -65,7 +71,6 @@ button {
     justify-content: space-between;
     font-family: Arial;
     font-size: 0.98vw;
-    color: $color-description-white;
 }
 
 .header__menu-item {
@@ -75,17 +80,21 @@ button {
         cursor: pointer;
         border-bottom: 0.2vw solid $color-btn-default;
     }
+    a {
+        color: $color-description-white;
+    }
 }
 
 .header__menu-item_active {
-    color: #FAFAFA;
+    a {
+        color: #FAFAFA;
+    }
     border-bottom: 0.2vw solid $color-btn-default;
 }
 
 .not-only {
     padding-top: 11.7vw;
     background: url('/shelter/assets/images/start-screen-gradient-background.png');
-    background-repeat: no-repeat;
     background-size: cover;
 }
 
@@ -322,7 +331,7 @@ button {
 }
 
 .in-addition {
-    height: 30.19vw;
+    height: 30.18vw;
     display: flex;
     align-items: center;
     background: #F6F6F6
@@ -341,7 +350,7 @@ button {
 
 .in-addition__text-box {
     width: 24.83vw;
-    height: 18.28vw;
+    height: 18.29vw;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -386,4 +395,63 @@ button {
     font-size: 0.783vw;
     line-height: 1.19vw;
     color: #B2B2B2;
+}
+
+.footer {
+    background: url('/shelter/assets/images/start-screen-gradient-background.png');
+    background-size: cover;
+}
+
+.footer__container {
+    display: flex;
+    padding-top: 2.6vw;
+    justify-content: space-between;
+}
+
+.telephone {
+    width: 18.25vw;
+}
+
+.position {
+    width: 19.66vw;
+}
+
+.footer__contact {
+    height: 15.13vw;
+    margin-top: 1.4vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.footer__contact-box {
+    display: flex;
+    align-items: center;
+}
+
+.footer__contact-title {
+    color: $color-title-white;
+}
+
+.footer__contact-icon {
+    height: 2.084vw;
+    cursor: pointer;
+}
+
+.footer__contact-text {
+    margin-left: 1.3vw;
+    font-family: Georgia;
+    font-size: 1.3vw;
+    line-height: 1.5vw;
+    letter-spacing: 0.077vw;
+    color: $color-btn-default;
+    cursor: pointer;
+}
+
+.footer__img-box {
+    height: 20.5vw;
+}
+
+.footer__img {
+    height: 20.5vw;
 }
