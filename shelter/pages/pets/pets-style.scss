@@ -119,7 +119,7 @@ a {
 }
 
 .our-friends__container {
-    height: 87.3vw;
+    height: 87.25vw;
     align-items: center;
     flex-direction: column;
 }
@@ -218,6 +218,61 @@ a {
     }
 }
 
+.footer {
+    background: url('/shelter/assets/images/start-screen-gradient-background.png');
+    background-size: cover;
+}
 
+.footer__container {
+    display: flex;
+    padding-top: 2.38vw;
+    justify-content: space-between;
+}
 
+.telephone {
+    width: 18.25vw;
+}
 
+.position {
+    width: 19.66vw;
+}
+
+.footer__contact {
+    height: 15.13vw;
+    margin-top: 1.33vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.footer__contact-box {
+    display: flex;
+    align-items: center;
+}
+
+.footer__contact-title {
+    color: $color-title-white;
+}
+
+.footer__contact-icon {
+    height: 2.084vw;
+    cursor: pointer;
+}
+
+.footer__contact-text {
+    margin-left: 1.3vw;
+    font-family: Georgia;
+    font-size: 1.3vw;
+    line-height: 1.5vw;
+    letter-spacing: 0.077vw;
+    color: $color-btn-default;
+    cursor: pointer;
+}
+
+.footer__img-box {
+    height: 20.5vw;
+}
+
+.footer__img {
+    height: 20.5vw;
+}
