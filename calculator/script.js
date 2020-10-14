@@ -21,6 +21,12 @@ class Calculator {
       this.currentOperand = this.currentOperand.toString() + number.toString();
     }
 
+    cropNumber(number) {
+      number = number.replace(/0+$/, '');
+      number = number.replace(/\.+$/, '');
+      return number;
+    }
+
     isNegativeNumber(operation) {
       if (this.currentOperand === '' && operation === '-') return true;
     }
@@ -42,21 +48,20 @@ class Calculator {
       let computation;
       const prev = parseFloat(this.previousOperand);
       const current = parseFloat(this.currentOperand);
-      let maxLength = Math.max(('' + prev).length, ('' + current).length) - 1;
-      maxLength = this.isDecimalDigits ? maxLength - 1 : maxLength;
+      let maxLength = Math.max(('' + prev).length, ('' + current).length);
       if (this.operation !== '√' && (isNaN(prev) || isNaN(current))) return;
       switch (this.operation) {
         case '+':
-          computation = (prev + current).toFixed(maxLength);
+          computation = this.cropNumber((prev + current).toFixed(maxLength));
           break
         case '-':
-          computation = (prev - current).toFixed(maxLength);
+          computation = this.cropNumber((prev - current).toFixed(maxLength));
           break
         case '*':
-          computation = (prev * current).toFixed(maxLength);
+          computation = this.cropNumber((prev * current).toFixed(maxLength));
           break
         case '÷':
-          computation = (prev / current).toFixed(maxLength + 1);
+          computation = this.cropNumber((prev / current).toFixed(maxLength + 1));
           break
         case 'xn':
           computation = Math.pow(prev, current);
