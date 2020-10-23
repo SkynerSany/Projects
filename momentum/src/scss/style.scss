@@ -1,0 +1,43 @@
+.body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-size: cover;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    color: #ffffff;
+    cursor: default;
+}
+
+[contenteditable] {
+    cursor: text;
+}
+
+.time__text {
+    font-size: 8vw;
+}
+
+.time__date {
+    font-size: 3vw;
+}
+
+.greeting {
+    font-size: 2vw;
+}
+
+.greeting__input {
+    display: inline-block;
+}
+
+.focus {
+    opacity: 0.8;
+    font-size: 1.5vw;
+}
+
+@font-face {
+    font-family: "Quicksand";
+    src: url(/src/assets/fonts/Quicksand.ttf);
+}
