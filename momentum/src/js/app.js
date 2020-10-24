@@ -1,6 +1,6 @@
 import '../scss/style.scss';
 
-const week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+const week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const greetingInput = document.querySelector('.greeting__input');
 const focusInput = document.querySelector('.focus__input');
@@ -12,6 +12,8 @@ class Time {
         this.dateBox = document.querySelector('.time__date');
         this.greeting = document.querySelector('.greeting__text');
         this.body = document.querySelector('.body');
+        this.dayTime = 'Morning';
+        this.bgMas = [];
         this.timeNumbers = [];
         this.curentBg = null;
     }
@@ -59,13 +61,19 @@ class Time {
 
     checkTime() {
         if (time.timeNumbers[0] >= 6 && time.timeNumbers[0] < 12) {
-            time.switchGreeting('Morning');
+            time.dayTime = 'Morning';
         } else if (time.timeNumbers[0] >= 12 && time.timeNumbers[0] < 18) {
-            time.switchGreeting('Day');
+            time.dayTime = 'Day';
         } else if (time.timeNumbers[0] >= 18 && time.timeNumbers[0] < 24) {
-            time.switchGreeting('Evening');
+            time.dayTime = 'Evening';
         } else {
-            time.switchGreeting('Night');
+            time.dayTime = 'Night';
+        }
+    }
+
+    generateBgMas() {
+        for (let i = 1; i < 25; i++) {
+            time.bgMas.push(Math.floor(Math.random() * (20 - 1) + 1));
         }
     }
 
@@ -82,7 +90,7 @@ class Time {
             }
 
             const img = document.createElement('img');
-            img.src = `/src/assets/images/${time.tempBg + 1}.jpg`;
+            img.src = `/src/assets/images/${time.dayTime}/${time.bgMas[time.tempBg + 1]}.jpg`;
             img.onload = () => {
                 this.body.style.backgroundImage = `url('${img.src}')`;
             };
@@ -90,8 +98,9 @@ class Time {
 
         if (time.curentBg !== time.timeNumbers[0]) {
             time.curentBg = time.timeNumbers[0];
-            this.body.style.backgroundImage = `url('/src/assets/images/${time.curentBg + 1}.jpg')`;
             time.checkTime();
+            this.body.style.backgroundImage = `url('/src/assets/images/${time.dayTime}/${time.bgMas[time.curentBg + 1]}.jpg')`;
+            time.switchGreeting(time.dayTime);
         }
     }
 
@@ -139,7 +148,7 @@ function generateEvents() {
     switchBgBtn.addEventListener('click', () => {
         switchBgBtn.disabled = true;
         setTimeout(() => { 
-            switchBgBtn.disabled = false 
+            switchBgBtn.disabled = false; 
         }, 1000);
         time.switchBg(true);
     });
@@ -150,6 +159,7 @@ generateEvents();
 
 let time = new Time();
 
+time.generateBgMas();
 time.showTime();
 time.showDate();
 
