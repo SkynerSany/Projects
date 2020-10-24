@@ -4,6 +4,8 @@ const week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const greetingInput = document.querySelector('.greeting__input');
 const focusInput = document.querySelector('.focus__input');
+const switchBgBtn = document.querySelector('.switch-bg');
+
 class Time {
     constructor () {
         this.timeBox = document.querySelector('.time__text');
@@ -67,7 +69,25 @@ class Time {
         }
     }
 
-    switchBg() {
+    switchBg(fromBtn) {
+        if (fromBtn) {
+            if (!time.tempBg && time.tempBg !== 0) {
+                time.tempBg = time.curentBg;
+            }
+
+            if (time.tempBg < 23) {
+                time.tempBg += 1;
+            } else {
+                time.tempBg = 0;
+            }
+
+            const img = document.createElement('img');
+            img.src = `/src/assets/images/${time.tempBg + 1}.jpg`;
+            img.onload = () => {
+                this.body.style.backgroundImage = `url('${img.src}')`;
+            };
+        }
+
         if (time.curentBg !== time.timeNumbers[0]) {
             time.curentBg = time.timeNumbers[0];
             this.body.style.backgroundImage = `url('/src/assets/images/${time.curentBg + 1}.jpg')`;
@@ -115,11 +135,22 @@ function generateEvents() {
             window.localStorage.focus = focusInput.textContent;
         }
     });
+
+    switchBgBtn.addEventListener('click', () => {
+        switchBgBtn.disabled = true;
+        setTimeout(() => { 
+            switchBgBtn.disabled = false 
+        }, 1000);
+        time.switchBg(true);
+    });
 }
 
 addToLocalStorage();
 generateEvents();
 
 let time = new Time();
+
 time.showTime();
 time.showDate();
+
+
