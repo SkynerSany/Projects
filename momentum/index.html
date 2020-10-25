@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dist/style.css">
+    <title>Momentum</title>
+</head>
+<body class="body">
+    <div class="container">
+        <header class="header">
+            <button class="switch-bg"></button>
+            <div class="greeting">
+                <span class="greeting__text" >Good Afternoon</span>
+                <span class="greeting__input" contenteditable="true">[Enter Name]</span>
+            </div>
+        </header>
+        <main class="main">
+            <div class="quotes">
+                <button class="quotes__refresh"></button>
+                <p class="quotes__quote"></p>
+                <p class="quotes__author"></p>
+            </div>
+            <div class="time">
+                <time class="time__text"></time>
+                <p class="time__date"></p>
+            </div>
+            <div class="weather">
+                <div class="weather__city-info">
+                    <span class="weather__city-description">Your city is [</span>
+                    <span class="weather__city-name" contenteditable="true">Minsk</span>
+                    <span>]</span>
+                </div>
+                <div class="weather__info">
+                    <span class="weather__temperature"></span>
+                    <img class="weather__icon" src="" alt="weather icon">
+                    <div class="weather__optional">
+                        <p class="weather__humidity">Humidity: <span class="weather__humidity-info"></span></p>
+                        <p class="weather__speed">Wind speed: <span class="weather__speed-info"></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="focus">
+                <p class="focus__text">What Is Your Focus For Today?</p>
+                <p class="focus__input" contenteditable="true">[Enter Focus]</p>
+            </div>
+        </main>
+    </div>
+    <div class="wait-img"></div>
+    <script src="dist/bundle.js"></script>
+</body>
+</html>
