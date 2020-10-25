@@ -10,7 +10,6 @@ export default class Weather {
         try {
             const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=6ebdd0fd3d344c146430ede697227fdf`);
             this.weather = await response.json();
-            console.log(this.weather);
             this.sendWeather();
         } catch(e) {
             alert(`City ${window.localStorage.city} is not found`);
