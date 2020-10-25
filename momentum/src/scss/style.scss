@@ -32,7 +32,7 @@
     left: 1vw;
     height: 3vw;
     width: 3vw;
-    background: url('../assets/images/icons/cameraswitch.png');
+    background: url('/src/assets/images/icons/cameraswitch.png');
     border: none;
     border-radius: 50%;
     background-size: 2.3vw;
@@ -76,7 +76,7 @@
     height: 1.3vw;
     width: 1.3vw;
     float: left;
-    background: url('../assets/images/icons/refresh-page-option.svg');
+    background: url('/src/assets/images/icons/refresh-page-option.svg');
     border: none;
     border-radius: 50%;
     background-size: 1vw;
@@ -190,7 +190,7 @@
     height: 100vh;
     width: 100vw;
     bottom: 0vw;
-    background: url('../assets/images/wait.svg');
+    background: url('/src/assets/images/wait.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-color: rgba(255, 255, 255, 0.3);
@@ -198,5 +198,5 @@
 
 @font-face {
     font-family: "Quicksand";
-    src: url('../assets/fonts/Quicksand.ttf');
+    src: url('/src/assets/fonts/Quicksand.ttf');
 }
