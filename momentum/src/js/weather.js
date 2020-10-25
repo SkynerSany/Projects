@@ -14,6 +14,7 @@ export default class Weather {
             this.sendWeather();
         } catch(e) {
             alert(`City ${window.localStorage.city} is not found`);
+            window.localStorage.city = 'Minsk';
         }
     }
 

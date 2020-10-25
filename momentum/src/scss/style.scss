@@ -4,7 +4,6 @@
 
 .body {
     height: 100vh;
-    
     background-size: cover;
     font-family: 'Quicksand', sans-serif;
     font-weight: 600;
@@ -13,12 +12,19 @@
     cursor: default;
 }
 
+.container {
+    display: none;
+}
+
 .header {
     height: 5vw;
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
+    @media(max-width: 768px) {
+        height: 9vw;
+    }
 }
 
 .switch-bg {
@@ -38,6 +44,11 @@
     &:hover {
         background-color: rgba(255, 255, 255, 1);
     }
+    @media(max-width: 768px) {
+        height: 7vw;
+        width: 7vw;
+        background-size: 5.3vw;
+    }
 }
 
 .main {
@@ -55,6 +66,9 @@
 
 .quotes {
     font-size: 1.1vw;
+    @media(max-width: 768px) {
+        font-size: 2vw;
+    }
 }
 
 .quotes__refresh {
@@ -74,6 +88,11 @@
     &:hover {
         background-color: rgba(255, 255, 255, 1);
     }
+    @media(max-width: 768px) {
+        height: 2.3vw;
+        width: 2.3vw;
+        background-size: 1.6vw;
+    }
 }
 
 .quotes__quote {
@@ -83,14 +102,23 @@
 .time__text {
     font-size: 8vw;
     line-height: 7vw;
+    @media(max-width: 768px) {
+        font-size: 12vw;
+    }
 }
 
 .time__date {
     font-size: 3vw;
+    @media(max-width: 768px) {
+        font-size: 5vw;
+    }
 }
 
 .greeting {
     font-size: 2vw;
+    @media(max-width: 768px) {
+        font-size: 4vw;
+    }
 }
 
 .greeting__input {
@@ -104,11 +132,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    @media(max-width: 768px) {
+        width: 38vw;
+    }
 }
 
 .weather__city-info {
     margin-top: 1vw;
     font-size: 1.3vw;
+    @media(max-width: 768px) {
+        font-size: 2.2vw;
+    }
 }
 
 .weather__city-name {
@@ -122,20 +156,44 @@
 
 .weather__temperature {
     font-size: 3vw;
+    @media(max-width: 768px) {
+        font-size: 5vw;
+    }
 }
 
 .weather__icon {
     height: 7vw;
+    @media(max-width: 768px) {
+        height: 10vw;
+    }
 }
 
 .weather__optional {
     text-align: left;
     font-size: 1.1vw;
+    @media(max-width: 768px) {
+        font-size: 2.1vw;
+    }
 }
 
 .focus {
     opacity: 0.8;
     font-size: 1.5vw;
+    @media(max-width: 768px) {
+        height: 2.5vw;
+    }
+}
+
+.wait-img {
+    display: block;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    bottom: 0vw;
+    background: url('/src/assets/images/wait.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 @font-face {

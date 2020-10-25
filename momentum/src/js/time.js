@@ -85,7 +85,7 @@ export default class Time {
             }
 
             const img = document.createElement('img');
-            img.src = `/src/assets/images/${this.dayTime}/${this.bgMas[this.tempBg + 1]}.jpg`;
+            img.src = `/src/assets/images/${this.dayTime}/${this.bgMas[this.tempBg]}.jpg`;
             img.onload = () => {
                 this.body.style.backgroundImage = `url('${img.src}')`;
             };
@@ -94,7 +94,7 @@ export default class Time {
         if (this.curentBg !== this.timeNumbers[0]) {
             this.curentBg = this.timeNumbers[0];
             this.checkTime();
-            this.body.style.backgroundImage = `url('/src/assets/images/${this.dayTime}/${this.bgMas[this.curentBg + 1]}.jpg')`;
+            this.body.style.backgroundImage = `url('/src/assets/images/${this.dayTime}/${this.bgMas[this.curentBg]}.jpg')`;
             this.switchGreeting(this.dayTime);
         }
     }

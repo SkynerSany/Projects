@@ -2,6 +2,8 @@ export default class Quotes {
     constructor() {
         this.quoteBox = document.querySelector('.quotes__quote');
         this.authorBox = document.querySelector('.quotes__author');
+        this.container = document.querySelector('.container');
+        this.waitImg = document.querySelector('.wait-img');
     }
 
     async getQuote() {
@@ -18,6 +20,8 @@ export default class Quotes {
     sendQuote() {
         this.quoteBox.textContent = `"${this.quote['text']}"`;
         this.authorBox.textContent = `© ${this.quote['author']}`;
+        this.waitImg.style.display = 'none';
+        this.container.style.display = 'block';
     }
 }
 
