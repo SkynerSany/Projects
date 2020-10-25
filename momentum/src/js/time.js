@@ -148,7 +148,7 @@ export default class Time {
         },
 
         addToLocalStorage() {
-            if (!window.localStorage.length) {
+            if (!window.localStorage.name) {
                 window.localStorage.setItem('name', greetingInput.textContent);
                 window.localStorage.setItem('focus', focusInput.textContent);
             } else {

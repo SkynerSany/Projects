@@ -6,8 +6,12 @@ export default class Quotes {
 
     async getQuote() {
         const response = await fetch('https://type.fit/api/quotes');
-        const data = await response.json();
-        this.quote = data[Math.floor(Math.random() * (data.length - 1) + 1)];
+        this.quotes = await response.json();
+        this.takeQuote();
+    }
+
+    takeQuote() {
+        this.quote = this.quotes[Math.floor(Math.random() * (this.quotes.length - 1) + 1)];
         this.sendQuote();
     }
 
@@ -18,6 +22,10 @@ export default class Quotes {
 }
 
 (() => {
+    const refreshBtn = document.querySelector('.quotes__refresh');
     const quotes = new Quotes();
     quotes.getQuote();
+    refreshBtn.addEventListener('click', () => {
+        quotes.takeQuote();
+    });
 })();
