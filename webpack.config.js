@@ -2,11 +2,11 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: './shelter/pages/main/app.js',
+  entry: './shelter/pages/pets/app.js',
   devtool: 'eval',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, './shelter/pages/main/'),
+    path: path.resolve(__dirname, './shelter/pages/pets/'),
   },
   module: {
     rules: [
@@ -28,6 +28,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new ExtractTextPlugin('style.css'),
+    new ExtractTextPlugin('pets-style.css'),
   ],
 };
