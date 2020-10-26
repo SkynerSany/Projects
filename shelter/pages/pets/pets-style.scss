@@ -219,8 +219,9 @@ a {
 }
 
 .footer {
-    background: url('/shelter/assets/images/start-screen-gradient-background.png');
+    background: url("/shelter/assets/images/start-screen-gradient-background.png");
     background-size: cover;
+    background-color: hsla(hue, saturation, lightness, alpha);
 }
 
 .footer__container {
