@@ -20,6 +20,9 @@ button {
         background: $color-btn-hover;
         border: none;
     }
+    @media(max-width: 768px) {
+        border-radius: 4vw;
+    }
 }
 
 a {
@@ -32,12 +35,18 @@ a {
     height: 9.4vw;
     position: fixed;
     background: $color-title-white;
+    @media(max-width: 768px) {
+        height: 15.6vw;
+    }
 }
 
 .container {
     margin: 0 auto;
     width: 93.75vw;
     display: flex;
+    @media(max-width: 768px) {
+        width: 91.9vw;
+    }
 }
 
 .header__container {
@@ -48,6 +57,10 @@ a {
     justify-content: space-between;
     align-items: center;
     color: $color-title-white;
+    @media(max-width: 768px) {
+        top: 4.6vw;
+        left: 4vw;
+    }
 }
 
 .header__logo-title {
@@ -58,6 +71,11 @@ a {
     letter-spacing: 0.12vw;
     color: $color-title-black;
     cursor: pointer;
+    @media(max-width: 768px) {
+        font-size: 4.35vw;
+        line-height: 3.3vw;
+        letter-spacing: 0.13vw;
+    }
 }
 
 .header__logo-description {
@@ -67,11 +85,20 @@ a {
     font-size: 1.074vw;
     letter-spacing: 0.08vw;
     color: $color-btn-text;
+    @media(max-width: 768px) {
+        margin-top: 1.8vw;
+        padding-left: 0.32vw;
+        font-size: 1.91vw;
+    }
 }
 
 .header__nav {
     width: 37.7vw;
     height: 2vw;
+    @media(max-width: 768px) {
+        width: 62.7vw;
+        height: 3.7vw;
+    }
 }
 
 .header__menu {
@@ -79,6 +106,9 @@ a {
     justify-content: space-between;
     font-family: Arial;
     font-size: 1.17vw;
+    @media(max-width: 768px) {
+        font-size: 1.95vw;
+    }
 }
 
 .header__menu-item {
@@ -87,6 +117,9 @@ a {
     &:hover {
         cursor: pointer;
         border-bottom: 0.2vw solid $color-btn-default;
+        @media(max-width: 768px) {
+            border-bottom: 0.6vw solid $color-btn-default;
+        }
     }
     a {
         color: $color-title-black;
@@ -98,6 +131,9 @@ a {
         color: $color-btn-text;
     }
     border-bottom: 0.2vw solid $color-btn-default;
+    @media(max-width: 768px) {
+        border-bottom: 0.6vw solid $color-btn-default;
+    }
 }
 
 .title {
@@ -106,10 +142,18 @@ a {
     line-height: 3.5vw;
     letter-spacing: 0.136vw;
     color: $color-title-black;
+    @media(max-width: 768px) {
+        font-size: 4.75vw;
+        line-height: 5.9vw;
+        letter-spacing: 0.185vw;
+    }
 }
 
 .main {
     padding-top: 9.4vw;
+    @media(max-width: 768px) {
+        padding-top: 15.6vw;
+    }
 }
 
 .our-friends {
@@ -122,12 +166,20 @@ a {
     height: 104.8vw;
     align-items: center;
     flex-direction: column;
+    @media(max-width: 768px) {
+        height: 225.6vw;
+        width: 75.7vw;
+    }
 }
 
 .our-friends__title {
     margin: 6.3vw 0 0 0.2vw;
     width: 32.05vw;
     text-align: center;
+    @media(max-width: 768px) {
+        margin: 10.4vw 0 0 0.1vw;
+        width: 53.05vw;
+    }
 }
 
 .slider {
@@ -137,12 +189,18 @@ a {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    @media(max-width: 768px) {
+        margin: 4.1vw 0 1.3vw 0;
+    }
 }
 
 .btn {
     font-family: Georgia;
     font-size: 1.3vw;
     letter-spacing: 0.09vw;
+    @media(max-width: 768px) {
+        font-size: 2.3vw;
+    }
 }
 
 .slider__image-box {
@@ -158,10 +216,24 @@ a {
     &:hover {
         background: #FFFFFF;
     }
+    @media(max-width: 768px) {
+        margin-bottom: 3.8vw;
+        width: 35.4vw;
+        height: 56.7vw;
+        &:nth-child(7) {
+            display: none;
+        }
+        &:nth-child(8) {
+            display: none;
+        }
+    }
 }
 
 .slider__image {
     height: 21vw;
+    @media(max-width: 768px) {
+        height: 35vw;
+    }
 }
 
 .slider__image-title {
@@ -170,6 +242,11 @@ a {
     font-size: 1.6vw;
     letter-spacing: 0.08vw;
     color: $color-title-black;
+    @media(max-width: 768px) {
+        margin: 2.29vw 0.3vw 2.4vw 0.5vw;
+        font-size: 2.6vw;
+        letter-spacing: 0.16vw;
+    }
 }
 
 .slider__image-btn {
@@ -178,6 +255,12 @@ a {
     height: 4vw;
     background: none;
     border: 0.15vw solid $color-btn-default;
+    @media(max-width: 768px) {
+        margin-bottom: 4.1vw;
+        width: 24vw;
+        height: 6.6vw;
+        border: 0.3vw solid $color-btn-default;
+    }
 }
 
 .our-friends__btn {
@@ -187,9 +270,12 @@ a {
 }
 
 .our-friends__slider-btn-box {
-    width: 340px;
+    width: 26.5vw;
     display: flex;
     justify-content: space-between;
+    @media(max-width: 768px) {
+        width: 44.2vw;
+    }
 }
 
 .our-friends__slider-btn {
@@ -197,6 +283,11 @@ a {
     height: 4vw;
     background: none;
     border: 0.15vw solid $color-btn-default;
+    @media(max-width: 768px) {
+        width: 6.6vw;
+        height: 6.6vw;
+        border: 0.3vw solid $color-btn-default;
+    }
 }
 
 .our-friends__slider-btn-disabled {
@@ -216,6 +307,10 @@ a {
         cursor: default;
         background: $color-btn-default;
     }
+    @media(max-width: 768px) {
+        width: 6.6vw;
+        height: 6.6vw;
+    }
 }
 
 .footer {
@@ -227,10 +322,18 @@ a {
     display: flex;
     padding-top: 3vw;
     justify-content: space-between;
+    @media(max-width: 768px) {
+        width: 83.2vw;
+        padding-top: 2.6vw;
+        flex-wrap: wrap;
+    }
 }
 
 .telephone {
     width: 22vw;
+    @media(max-width: 768px) {
+        width: 37vw;
+    }
 }
 
 .position {
@@ -243,6 +346,10 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    @media(max-width: 768px) {
+        width: 39.3vw;
+        height: 30.3vw;
+    }
 }
 
 .footer__contact-box {
@@ -257,6 +364,9 @@ a {
 .footer__contact-icon {
     height: 2.5vw;
     cursor: pointer;
+    @media(max-width: 768px) {
+        height: 4.11vw;
+    }
 }
 
 .footer__contact-text {
@@ -267,12 +377,27 @@ a {
     letter-spacing: 0.077vw;
     color: $color-btn-default;
     cursor: pointer;
+    @media(max-width: 768px) {
+        margin-left: 2.5vw;
+        font-size: 2.6vw;
+        letter-spacing: 0.16vw;
+        line-height: 2.85vw;
+    }
 }
 
 .footer__img-box {
     height: 24.6vw;
+    @media(max-width: 768px) {
+        height: 41.6vw;
+        margin-top: 8vw;
+        width: inherit;
+        text-align: center;
+    }
 }
 
 .footer__img {
     height: 24.6vw;
+    @media(max-width: 768px) {
+        height: 41.6vw;
+    }
 }
