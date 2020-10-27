@@ -155,7 +155,7 @@ a {
     display: none;
     @media screen and (max-width: 767px) {
         height: 7vw;
-        margin: 0 8.1vw 2.6vw 0;
+        margin: 0 11.4vw 1.9vw 0;    
         display: block;
     }
 }
@@ -168,7 +168,8 @@ a {
         padding-top: 16.85vw;
     }
     @media screen and (max-width: 767px) {
-        
+        padding-top: 39.9vw;
+        height: 217vw;
     }
 }
 
@@ -180,7 +181,8 @@ a {
         width: 60vw;
     }
     @media screen and (max-width: 767px) {
-        
+        width: 91vw;
+        justify-content: center;
     }
 }
 
@@ -197,7 +199,9 @@ a {
         width: initial;
     }
     @media screen and (max-width: 767px) {
-        
+        height: 106vw;
+        text-align: center;
+        align-items: center;
     }
 }
 
@@ -212,7 +216,9 @@ a {
         font-size: 5.7vw;
     }
     @media screen and (max-width: 767px) {
-        
+        width: 62vw;
+        font-size: 8.8vw;
+        line-height: 1.15;
     }
 }
 
@@ -224,7 +230,7 @@ a {
         font-size: 1.955vw;
     }
     @media screen and (max-width: 767px) {
-        
+        font-size: 4.7vw;
     }
 }
 
@@ -258,7 +264,9 @@ a {
         height: 6.9vw;
     }
     @media screen and (max-width: 767px) {
-        
+        height: 16vw;
+        width: 65vw;
+        padding: 4.5vw 0 0 13.8vw;
     }
 }
 
@@ -269,7 +277,9 @@ a {
         height: 77.2vw;
     }
     @media screen and (max-width: 767px) {
-        
+        margin-top: 16vw;
+        margin-left: 12vw;
+        height: 84.8vw;
     }
 }
 
@@ -283,7 +293,8 @@ a {
         flex-wrap: wrap;
     }
     @media screen and (max-width: 767px) {
-        
+        height: 304.5vw;
+        width: 85.2vw;
     }
 }
 
@@ -294,7 +305,7 @@ a {
         order: 1;
     }
     @media screen and (max-width: 767px) {
-        
+        margin: 3vw 0 7.1vw 0;
     }
 }
 
@@ -304,7 +315,7 @@ a {
         height: 53.2vw;
     }
     @media screen and (max-width: 767px) {
-        
+        height: 110.5vw;
     }
 }
 
@@ -321,7 +332,9 @@ a {
         width: inherit;
     }
     @media screen and (max-width: 767px) {
-        
+        margin: 8.5vw 0 0 0;
+        height: 155vw;
+        align-items: center;
     }
 }
 
@@ -349,12 +362,16 @@ a {
         width: 41vw;
     }
     @media screen and (max-width: 767px) {
-        
+        width: 68vw;
+        text-align: center;
     }
 }
 
 .about__text-description {
     color: $color-description-black;
+    @media screen and (max-width: 767px) {
+        text-align: justify;
+    }
 }
 
 .our-friends {
@@ -366,7 +383,7 @@ a {
         height: 114.3vw;
     }
     @media screen and (max-width: 767px) {
-        
+        height: 247.3vw;
     }
 }
 
@@ -381,7 +398,8 @@ a {
         height: 90.9vw;
     }
     @media screen and (max-width: 767px) {
-        
+        height: 219.9vw;
+        margin-bottom: 0vw;
     }
 }
 
@@ -393,7 +411,7 @@ a {
         width: 53.05vw;
     }
     @media screen and (max-width: 767px) {
-        
+        width: 90.05vw;
     }
 }
 
@@ -402,6 +420,26 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media screen and (max-width: 767px) {
+        position: relative;
+        flex-direction: column;
+    }
+}
+
+.slider__arrow {
+    @media screen and (max-width: 767px) {
+        position: initial;
+        margin: 5vw 0 0 41vw;
+        width: 16vw;
+        height: 16vw;
+        order: 2;
+        &:nth-child(1) {
+            margin: 0;
+            position: absolute;
+            bottom: 0vw;
+            left: 16vw;  
+        }
+    }
 }
 
 .slider__arrow-btn {
@@ -427,7 +465,7 @@ a {
         width: 1.89vw;
     }
     @media screen and (max-width: 767px) {
-
+        width: 4.89vw;
     }
 }
 
@@ -455,6 +493,10 @@ a {
     @media screen and (max-width: 767px) {
         width: 85.4vw;
         height: 136.4vw;
+        order: 1;
+        &:nth-child(3) {
+            display: none;
+        }
     }
 }
 
@@ -480,7 +522,7 @@ a {
         letter-spacing: 0.16vw;
     }
     @media screen and (max-width: 767px) {
-        margin: 2.2vw 0.3vw 3vw 0.5vw;
+        margin: 9.2vw 0.3vw 9vw 0.5vw;
         font-size: 6.6vw;
     }
 }
@@ -498,7 +540,7 @@ a {
         border: 0.3vw solid $color-btn-default;
     }
     @media screen and (max-width: 767px) {
-        margin-bottom: 9.9vw;
+        margin-bottom: 10.9vw;
         width: 58.3vw;
         height: 15.6vw;
         border: 0.8vw solid $color-btn-default;
@@ -514,7 +556,8 @@ a {
         height: 6.7vw;
     }
     @media screen and (max-width: 767px) {
-
+        width: 81.5vw;
+        height: 15.7vw;
     }
 }
 
@@ -527,7 +570,7 @@ a {
         height: 101.3vw;
     }
     @media screen and (max-width: 767px) {
-
+        height: 232.6vw;
     }
 }
 
@@ -541,7 +584,7 @@ a {
         height: 80.5vw;
     }
     @media screen and (max-width: 767px) {
-
+        height: 205.9vw;
     }
 }
 
@@ -552,7 +595,7 @@ a {
         width: 41vw;
     }
     @media screen and (max-width: 767px) {
-
+        width: 73vw;
     }
 }
 
@@ -567,7 +610,8 @@ a {
         height: 60.9vw;
     }
     @media screen and (max-width: 767px) {
-
+        height: 172.9vw;
+        justify-content: flex-start;
     }
 }
 
@@ -579,7 +623,8 @@ a {
         width: 22.13vw;
     }
     @media screen and (max-width: 767px) {
-
+        margin: 0 4.6vw 9.4vw;
+        width: 40.7vw;
     }
 }
 
@@ -591,7 +636,8 @@ a {
         padding-bottom: 3.4vw;
     }
     @media screen and (max-width: 767px) {
-
+        height: 15.7vw;
+        padding-bottom: 4.7vw;
     }
 }
 
@@ -605,7 +651,7 @@ a {
         letter-spacing: 0.19vw;
     }
     @media screen and (max-width: 767px) {
-
+        font-size: 4.9vw;
     }
 }
 
@@ -618,7 +664,7 @@ a {
         height: 102vw;
     }
     @media screen and (max-width: 767px) {
-
+        height: 170vw;
     }
 }
 
@@ -631,7 +677,7 @@ a {
         flex-wrap: wrap;
     }
     @media screen and (max-width: 767px) {
-
+        height: 143vw;
     }
 }
 
@@ -644,7 +690,8 @@ a {
         order: 1;
     }
     @media screen and (max-width: 767px) {
-
+        margin: 12.7vw 0.2vw 0 0;
+        height: 42.2vw;
     }
 }
 
@@ -659,7 +706,9 @@ a {
         height: 37vw;
     }
     @media screen and (max-width: 767px) {
-
+        height: 88vw;
+        width: 87.5vw;
+        align-items: center;
     }
 }
 
@@ -669,7 +718,8 @@ a {
         width: 38vw;
     }
     @media screen and (max-width: 767px) {
-
+        width: 66vw;
+        text-align: center;
     }
 }
 
@@ -683,7 +733,9 @@ a {
         font-size: 2.08vw;
     }
     @media screen and (max-width: 767px) {
-
+        font-size: 4.6vw;
+        line-height: 9.1vw;
+        letter-spacing: 0.06vw;
     }
 }
 
@@ -706,7 +758,7 @@ a {
             height: 2.85vw;
         }
         @media screen and (max-width: 767px) {
-
+            height: 6.85vw;
         }
     }
     span {
@@ -721,7 +773,11 @@ a {
         letter-spacing: 0.08vw;
     }
     @media screen and (max-width: 767px) {
-
+        padding-left: 1.76vw;
+        width: 87.8vw;
+        height: 13.5vw;
+        border-radius: 3vw;
+        font-size: 5.1vw;
     }
 }
 
@@ -737,7 +793,10 @@ a {
         line-height: 2.4vw;
     }
     @media screen and (max-width: 767px) {
-
+        font-size: 3.76vw;
+        text-align: justify;
+        width: inherit;
+        line-height: 5.8vw;
     }
 }
 
