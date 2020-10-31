@@ -22,7 +22,7 @@ export default class Time {
         this.timeNumbers[1] = timeInfo.getMinutes();
         this.timeNumbers[2] = timeInfo.getSeconds();
 
-        this.sendTime(`${this.addZero(this.timeNumbers[0])} : ${this.addZero(this.timeNumbers[1])} : ${this.addZero(this.timeNumbers[2])}`);
+        this.sendTime(this.addZero(this.timeNumbers[0]), this.addZero(this.timeNumbers[1]), this.addZero(this.timeNumbers[2]));
     }
 
     getDate() {
@@ -34,9 +34,11 @@ export default class Time {
         this.sendDate(`${this.week[this.timeNumbers[3]]}, ${this.timeNumbers[4]} ${this.months[this.timeNumbers[5]]}`);
     }
 
-    sendTime(strTime) {
+    sendTime(hours, minutes, seconds) {
         this.switchBg();
-        this.timeBox.textContent = strTime;
+        this.timeBox.children[0].textContent = hours;
+        this.timeBox.children[2].textContent = minutes;
+        this.timeBox.children[4].textContent = seconds;
     }
 
     sendDate(strDate) {
