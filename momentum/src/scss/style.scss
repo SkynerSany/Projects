@@ -3,6 +3,7 @@
 }
 
 .body {
+    background: aquamarine;
     height: 100vh;
     background-size: cover;
     font-family: 'Quicksand', sans-serif;
@@ -42,6 +43,7 @@
     cursor: pointer;
     outline: none;
     &:hover {
+        animation: animationBtn 0.2s;
         background-color: rgba(255, 255, 255, 1);
     }
     @media(max-width: 768px) {
@@ -69,6 +71,9 @@
     @media(max-width: 768px) {
         font-size: 2vw;
     }
+    @media(max-width: 450px) {
+        font-size: 2.5vw;
+    }
 }
 
 .quotes__refresh {
@@ -86,7 +91,9 @@
     cursor: pointer;
     outline: none;
     &:hover {
+        animation: animationBtn 0.2s;
         background-color: rgba(255, 255, 255, 1);
+        
     }
     @media(max-width: 768px) {
         height: 2.3vw;
@@ -95,15 +102,20 @@
     }
 }
 
-.quotes__quote {
-    white-space: nowrap;
-}
-
 .time__text {
+    width: 44vw;
+    display: block;
     font-size: 8vw;
     line-height: 7vw;
     @media(max-width: 768px) {
+        width: 70vw;
         font-size: 12vw;
+        line-height: 9vw;
+    }
+    @media(max-width: 450px) {
+        width: 93vw;
+        font-size: 16vw;
+        line-height: 14vw;
     }
 }
 
@@ -112,12 +124,18 @@
     @media(max-width: 768px) {
         font-size: 5vw;
     }
+    @media(max-width: 450px) {
+        font-size: 6vw;
+    }
 }
 
 .greeting {
     font-size: 2vw;
     @media(max-width: 768px) {
         font-size: 4vw;
+    }
+    @media(max-width: 450px) {
+        font-size: 5vw;
     }
 }
 
@@ -135,6 +153,10 @@
     @media(max-width: 768px) {
         width: 38vw;
     }
+    @media(max-width: 450px) {
+        width: 53vw;
+        height: 18vw;
+    }
 }
 
 .weather__city-info {
@@ -142,6 +164,9 @@
     font-size: 1.3vw;
     @media(max-width: 768px) {
         font-size: 2.2vw;
+    }
+    @media(max-width: 450px) {
+        font-size: 3.2vw;
     }
 }
 
@@ -152,6 +177,9 @@
 .weather__info {
     display: flex;
     align-items: center;
+    @media(max-width: 450px) {
+        font-size: 3.2vw;
+    }
 }
 
 .weather__temperature {
@@ -159,12 +187,18 @@
     @media(max-width: 768px) {
         font-size: 5vw;
     }
+    @media(max-width: 450px) {
+        font-size: 7vw;
+    }
 }
 
 .weather__icon {
     height: 7vw;
     @media(max-width: 768px) {
         height: 10vw;
+    }
+    @media(max-width: 450px) {
+        height: 13vw;
     }
 }
 
@@ -174,6 +208,9 @@
     @media(max-width: 768px) {
         font-size: 2.1vw;
     }
+    @media(max-width: 450px) {
+        font-size: 2.5vw;
+    }
 }
 
 .focus {
@@ -181,6 +218,10 @@
     font-size: 1.5vw;
     @media(max-width: 768px) {
         height: 2.5vw;
+        font-size: 2.3vw;
+    }
+    @media(max-width: 450px) {
+        font-size: 4.3vw;
     }
 }
 
@@ -194,6 +235,24 @@
     background-repeat: no-repeat;
     background-position: center;
     background-color: rgba(255, 255, 255, 0.3);
+}
+
+@keyframes animationBtn {
+    0% {
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+    25% {
+        background-color: rgba(255, 255, 255, 0.65);
+    }
+    50% {
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+    75% {
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+    100% {
+        background-color: rgba(255, 255, 255, 1);
+    }
 }
 
 @font-face {
