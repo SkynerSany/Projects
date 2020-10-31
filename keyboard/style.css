@@ -1,0 +1,105 @@
+.row {
+    display: flex;
+}
+
+.row .text {
+    height: 2vw;
+}
+
+.row:first-child .button{
+    text-align: center;
+    
+}
+
+.top {
+    width: 1.5vw;
+    height: 0vw;
+    margin-bottom: 0.8vw;
+}
+
+.button {
+    height: 3vw;
+    width: 3vw;
+    margin: 0.5vw 0.5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 15%;
+    text-align: center;
+    background-color: #3b3b45;
+    font-family: monospace;
+    font-size: 1.1vw;
+    cursor: pointer;
+}
+
+.button:active {
+    animation-duration: 0.4s;
+    animation-name: btn-click;
+    transform: scale(1.05, 1.05);
+    background-color: #2700ff;
+}
+
+.active {
+    animation-duration: 0.4s;
+    animation-name: btn-click;
+    transform: scale(1.05, 1.05);
+    background-color: #2700ff !important;
+}
+
+.btn-option {
+    flex: 1;
+    background-color: #000000;
+    border-radius: 0.4vw;
+}
+
+.space {
+    flex: 7;
+    background-color: #3b3b45;
+}
+
+.ctrl {
+    flex: 1.7;
+}
+
+.left-shift {
+    flex: 2.25;
+}
+
+.right-shift {
+    flex: 0.5;
+}
+
+.up {
+    flex: 0.524;
+}
+
+.textarea {
+    margin: 0 auto;
+    height: 13vw;
+    width: 64vw;
+    display: block;
+}
+
+.keyboard {
+    margin: 0 auto;
+    width: 64.4vw;
+    color: #ffffff;
+}
+
+@keyframes btn-click {
+    20% { 
+        background-color: #ff0000;
+    }
+    40% {
+        background-color: #ff00d4;
+    }
+    60%{
+        background-color: #e100ff;
+    }
+    80%{
+        background-color: #008cff;
+    }
+    100%{
+        background-color: #2700ff;
+    }
+}
