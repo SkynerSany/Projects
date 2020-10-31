@@ -22,7 +22,7 @@ export default class Time {
         this.timeNumbers[1] = timeInfo.getMinutes();
         this.timeNumbers[2] = timeInfo.getSeconds();
 
-        this.sendTime(`${this.addZero(this.timeNumbers[0])} : ${this.addZero(this.timeNumbers[1])} : ${this.addZero(this.timeNumbers[2])} PM`);
+        this.sendTime(`${this.addZero(this.timeNumbers[0])} : ${this.addZero(this.timeNumbers[1])} : ${this.addZero(this.timeNumbers[2])}`);
     }
 
     getDate() {
