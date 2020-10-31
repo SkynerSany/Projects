@@ -107,8 +107,7 @@
     font-size: 8vw;
     line-height: 7vw;
     span {
-        display: inline-block;
-        width: 9vw;
+        display: unset;
     }
     @media(max-width: 768px) {
         width: 70vw;
@@ -120,6 +119,10 @@
         font-size: 16vw;
         line-height: 14vw;
     }
+}
+
+.numbers {
+    width: 9vw;
 }
 
 .time__date {
