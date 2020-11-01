@@ -1,3 +1,7 @@
+.discription {
+    text-align: center;
+}
+
 .row {
     display: flex;
 }
@@ -84,6 +88,85 @@
     margin: 0 auto;
     width: 64.4vw;
     color: #ffffff;
+}
+
+.icon {
+    height: 3vw;
+    position: absolute;
+    top: 22.5vw;
+    left: 14vw;
+}
+
+@keyframes open {
+    20% { 
+        transform: rotate(0deg);
+    }
+    40% {
+        transform: rotate(10deg);
+    }
+    60%{
+        transform: rotate(20deg);
+    }
+    80%{
+        transform: rotate(30deg);
+    }
+    100%{
+        transform: rotate(45deg);
+    }
+}
+
+@keyframes close {
+    20% { 
+        transform: rotate(45deg);
+    }
+    40% {
+        transform: rotate(30deg);
+    }
+    60%{
+        transform: rotate(20deg);
+    }
+    80%{
+        transform: rotate(10deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes openKeyboard {
+    20% { 
+        opacity: 0;
+    }
+    40% {
+        opacity: 0.3;
+    }
+    60%{
+        opacity: 0.5;
+    }
+    80%{
+        opacity: 0.7;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes closeKeyboard {
+    20% { 
+        opacity: 1;
+    }
+    40% {
+        opacity: 0.7;
+    }
+    60%{
+        opacity: 0.5;
+    }
+    80%{
+        opacity: 0.3;
+    }
+    100%{
+        opacity: 0;
+    }
 }
 
 @keyframes btn-click {
