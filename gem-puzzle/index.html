@@ -1,52 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="dist/style.css">
-    <title>Momentum</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="dist/style.css" />
+    <title>Gem-puzzle</title>
 </head>
-<body class="body">
-    <div class="container">
-        <header class="header">
-            <button class="switch-bg"></button>
-            <div class="greeting">
-                <span class="greeting__text" >Good Afternoon</span>
-                <span class="greeting__input" contenteditable="true">[Enter Name]</span>
+
+<body>
+    <header class="header">
+        <div class="info">
+            <span class="description">Time </span>
+            <span class="timer">00 : 00</span>
+        </div>
+        <div class="moves">
+            <span class="description">Moves </span>
+            <span class="counter">0</span>
+        </div>
+        <button class="pause visible">Pause game</button>
+        <button class="pause">Resume game</button>
+    </header>
+    <div class="game-board">
+        <div class="chip" data-id="1">1</div>
+        <div class="chip" data-id="2">2</div>
+        <div class="chip" data-id="3">3</div>
+        <div class="chip" data-id="4">4</div>
+        <div class="chip" data-id="5">5</div>
+        <div class="chip" data-id="6">6</div>
+        <div class="chip" data-id="7">7</div>
+        <div class="chip" data-id="8">8</div>
+        <div class="chip" data-id="9">9</div>
+        <div class="chip" data-id="10">10</div>
+        <div class="chip" data-id="11">11</div>
+        <div class="chip" data-id="12">12</div>
+        <div class="chip" data-id="13">13</div>
+        <div class="chip" data-id="14">14</div>
+        <div class="chip" data-id="15">15</div>
+        <div class="empty" data-id="0"></div>
+        <span class="overlay">
+            <div class="screen__container active" data-screen-name="main">
+                <button class="nav__btn">New Game</button>
+                <button class="nav__btn" data-screen="saved_games">Saved games</button>
+                <button class="nav__btn" data-screen="best_scores">Best scores</button>
+                <button class="nav__btn" data-screen="rules">Rules</button>
+                <button class="nav__btn" data-screen="settings">Settings</button>
             </div>
-        </header>
-        <main class="main">
-            <div class="quotes">
-                <button class="quotes__refresh"></button>
-                <p class="quotes__quote"></p>
-                <p class="quotes__author"></p>
+            <div class="screen__container" data-screen-name="settings">
+                <h2 class="screen__title">Settings</h2>
+                <label class="nav__btn">Field size: </label>
+                <select class="select-box">
+                    <option class="select-option" value="3">3x3</option>
+                    <option class="select-option" value="4" selected="">4x4</option>
+                    <option class="select-option" value="5">5x5</option>
+                    <option class="select-option" value="6">6x6</option>
+                    <option class="select-option" value="7">7x7</option>
+                    <option class="select-option" value="8">8x8</option>
+                </select>
+                <span class="info-option"></span>
+                <button class="nav__btn go_back" data-screen="main">go back</button>
             </div>
-            <div class="time">
-                <time class="time__text"><span class="numbers"></span><span> : </span><span class="numbers"></span><span> : </span><span class="numbers"></span></time>
-                <p class="time__date"></p>
+            <div class="screen__container" data-screen-name="saved_games">
+                <h2 class="screen__title">Saved games:</h2>
+                <div class="noSaves">There is no any saved games yet!</div>
+                <button class="nav__btn go_back" data-screen="main">go back</button>
             </div>
-            <div class="weather">
-                <div class="weather__city-info">
-                    <span class="weather__city-description">Your city is [</span>
-                    <span class="weather__city-name" contenteditable="true">Minsk</span>
-                    <span>]</span>
-                </div>
-                <div class="weather__info">
-                    <span class="weather__temperature"></span>
-                    <img class="weather__icon" src="" alt="weather icon">
-                    <div class="weather__optional">
-                        <p class="weather__humidity">Humidity: <span class="weather__humidity-info"></span></p>
-                        <p class="weather__speed">Wind speed: <span class="weather__speed-info"></span></p>
+            <div class="screen__container" data-screen-name="best_scores">
+                <h2 class="screen__title">Best scores</h2>
+                <div class="results">
+                    <div class="date">
+                        <div class="subtitle">Date</div>
+                        <div class="item_0">2 Nov 2020</div>
+                    </div>
+                    <div class="moves">
+                        <div class="subtitle">Moves</div>
+                        <div class="item_0">552</div>
+                    </div>
+                    <div class="size">
+                        <div class="subtitle">Size</div>
+                        <div class="item_0">4x4</div>
+                    </div>
+                    <div class="time">
+                        <div class="subtitle">Time</div>
+                        <div class="item_0">07m 17s</div>
                     </div>
                 </div>
+                <button class="nav__btn go_back" data-screen="main">go back</button>
             </div>
-            <div class="focus">
-                <p class="focus__text">What Is Your Focus For Today?</p>
-                <p class="focus__input" contenteditable="true">[Enter Focus]</p>
+            <div class="screen__container" data-screen-name="rules">
+                <h2 class="screen__title">Rules of Gem Puzzle</h2>
+                <p class="description">
+                    The object of the puzzle is to place the tiles in order by making
+                    sliding moves that use the empty space.
+                </p>
+                <p class="description">
+                    You can save your game and load it later. Or you can just use pause
+                    button. Also you can choose game field size of color in Settings
+                </p>
+                <button class="nav__btn go_back" data-screen="main">go back</button>
             </div>
-        </main>
+            <div class="screen__container" data-screen-name="win">
+                <h2 class="screen__title">Congratulations!</h2>
+                <button class="nav__btn go_back" data-screen="main">go back</button>
+            </div>
+        </span>
     </div>
-    <div class="wait-img"></div>
-    <script src="dist/bundle.js"></script>
+    <script src="./dist/bundle.js"></script>
 </body>
+
 </html>
