@@ -1,0 +1,391 @@
+{
+    "header": {
+        "0": {
+            "name": "header",
+            "class": "header",
+            "parent": "body"
+        },
+        "1": {
+            "name": "div",
+            "class": "info",
+            "parent": "header"
+        },
+        "2": {
+            "name": "span",
+            "class": "description",
+            "textContent": "Time ",
+            "parent": "info"
+        },
+        "3": {
+            "name": "span",
+            "class": "timer",
+            "textContent": "00 : 00",
+            "parent": "info"
+        },
+        "4": {
+            "name": "div",
+            "class": "moves",
+            "parent": "header"
+        },
+        "5": {
+            "name": "span",
+            "class": "description",
+            "textContent": "Moves ",
+            "parent": "moves"
+        },
+        "6": {
+            "name": "span",
+            "class": "counter",
+            "textContent": "0",
+            "parent": "moves"
+        },
+        "7": {
+            "name": "button",
+            "class": "pause visible",
+            "textContent": "Pause game",
+            "parent": "header"
+        },
+        "8": {
+            "name": "button",
+            "class": "pause",
+            "textContent": "Resume game",
+            "parent": "header"
+        }
+    },
+
+    "gameBoard": {
+        "0": {
+            "name": "div",
+            "class": "game-board",
+            "parent": "body"
+        },
+        "1": {
+            "name": "div",
+            "class": "overlay visible",
+            "parent": "game-board"
+        },
+        "2": {
+            "name": "div",
+            "class": "screen__container active",
+            "attr": {
+                "name" : "data-screen-name",
+                "value" : "main"
+            },
+            "parent": "overlay visible"
+        },
+        "3": {
+            "name": "button",
+            "class": "nav__btn start",
+            "textContent": "New Game",
+            "parent": "screen__container active"
+        },
+        "4": {
+            "name": "button",
+            "class": "nav__btn",
+            "attr": {
+                "name" : "data-screen",
+                "value" : "saved_games"
+            },
+            "textContent": "Saved games",
+            "parent": "screen__container active"
+        },
+        "5": {
+            "name": "button",
+            "class": "nav__btn",
+            "attr": {
+                "name" : "data-screen",
+                "value" : "best_scores"
+            },
+            "textContent": "Best scores",
+            "parent": "screen__container active"
+        },
+        "6": {
+            "name": "button",
+            "class": "nav__btn",
+            "attr": {
+                "name" : "data-screen",
+                "value" : "rules"
+            },
+            "textContent": "Rules",
+            "parent": "screen__container active"
+        },
+        "7": {
+            "name": "button",
+            "class": "nav__btn",
+            "attr": {
+                "name" : "data-screen",
+                "value" : "settings"
+            },
+            "textContent": "Settings",
+            "parent": "screen__container active"
+        },
+        "8": {
+            "name": "div",
+            "class": "screen__container hidden",
+            "attr": {
+                "name" : "data-screen-name",
+                "value" : "settings"
+            },
+            "parent": "overlay visible"
+        },
+        "9": {
+            "name": "h2",
+            "class": "screen__title",
+            "textContent": "Settings",
+            "parent": "settings"
+        },
+        "10": {
+            "name": "label",
+            "class": "nav__btn",
+            "textContent": "Field size: ",
+            "parent": "settings"
+        },
+        "11": {
+            "name": "select",
+            "class": "select-box",
+            "parent": "settings"
+        },
+        "12": {
+            "name": "option",
+            "class": "select-option",
+            "attr": {
+                "name" : "value",
+                "value" : "3"
+            },
+            "textContent": "3x3",
+            "parent": "select-box"
+        },
+        "13": {
+            "name": "option",
+            "class": "select-option",
+            "attr": {
+                "name" : "value",
+                "value" : "4"
+            },
+            "textContent": "4x4",
+            "parent": "select-box"
+        },
+        "14": {
+            "name": "option",
+            "class": "select-option",
+            "attr": {
+                "name" : "value",
+                "value" : "5"
+            },
+            "textContent": "5x5",
+            "parent": "select-box"
+        },
+        "15": {
+            "name": "option",
+            "class": "select-option",
+            "attr": {
+                "name" : "value",
+                "value" : "6"
+            },
+            "textContent": "6x6",
+            "parent": "select-box"
+        },
+        "16": {
+            "name": "option",
+            "class": "select-option",
+            "attr": {
+                "name" : "value",
+                "value" : "7"
+            },
+            "textContent": "7x7",
+            "parent": "select-box"
+        },
+        "17": {
+            "name": "option",
+            "class": "select-option",
+            "attr": {
+                "name" : "value",
+                "value" : "8"
+            },
+            "textContent": "8x8",
+            "parent": "select-box"
+        },
+        "18": {
+            "name": "span",
+            "class": "info-option",
+            "parent": "settings"
+        },
+        "19": {
+            "name": "button",
+            "class": "nav__btn go_back",
+            "attr": {
+                "name" : "data-screen",
+                "value" : "main"
+            },
+            "textContent": "go back",
+            "parent": "settings"
+        },
+        "20": {
+            "name": "div",
+            "class": "screen__container hidden",
+            "attr": {
+                "name" : "data-screen-name",
+                "value" : "saved_games"
+            },
+            "parent": "overlay visible"
+        },
+        "21": {
+            "name": "h2",
+            "class": "screen__title",
+            "textContent": "Saved games:",
+            "parent": "saved_games"
+        },
+        "22": {
+            "name": "div",
+            "class": "noSaves",
+            "textContent": "There is no any saved games yet!",
+            "parent": "saved_games"
+        },
+        "23": {
+            "name": "button",
+            "class": "nav__btn go_back",
+            "attr": {
+                "name" : "data-screen",
+                "value" : "main"
+            },
+            "textContent": "go back",
+            "parent": "saved_games"
+        },
+        "24": {
+            "name": "div",
+            "class": "screen__container hidden",
+            "attr": {
+                "name" : "data-screen-name",
+                "value" : "best_scores"
+            },
+            "parent": "overlay visible"
+        },
+        "25": {
+            "name": "h2",
+            "class": "screen__title",
+            "textContent": "Best scores",
+            "parent": "best_scores"
+        },
+        "26": {
+            "name": "div",
+            "class": "results",
+            "parent": "best_scores"
+        },
+        "27": {
+            "name": "div",
+            "class": "date",
+            "parent": "results"
+        },
+        "28": {
+            "name": "div",
+            "class": "subtitle",
+            "textContent": "Date",
+            "parent": "date"
+        },
+        "29": {
+            "name": "div",
+            "class": "moves",
+            "parent": "results"
+        },
+        "30": {
+            "name": "div",
+            "class": "subtitle",
+            "textContent": "Moves",
+            "parent": "moves"
+        },
+        "31": {
+            "name": "div",
+            "class": "size",
+            "parent": "results"
+        },
+        "32": {
+            "name": "div",
+            "class": "subtitle",
+            "textContent": "Size",
+            "parent": "size"
+        },
+        "33": {
+            "name": "div",
+            "class": "time",
+            "parent": "results"
+        },
+        "34": {
+            "name": "div",
+            "class": "subtitle",
+            "textContent": "Time",
+            "parent": "time"
+        },
+        "35": {
+            "name": "button",
+            "class": "nav__btn go_back",
+            "attr": {
+                "name" : "data-screen",
+                "value" : "main"
+            },
+            "textContent": "go back",
+            "parent": "best_scores"
+        },
+        "36": {
+            "name": "div",
+            "class": "screen__container hidden",
+            "attr": {
+                "name" : "data-screen-name",
+                "value" : "rules"
+            },
+            "parent": "overlay visible"
+        },
+        "37": {
+            "name": "h2",
+            "class": "screen__title",
+            "textContent": "Rules of Gem Puzzle",
+            "parent": "rules"
+        },
+        "38": {
+            "name": "p",
+            "class": "description",
+            "textContent": "The object of the puzzle is to place the tiles in order by making sliding moves that use the empty space.",
+            "parent": "rules"
+        },
+        "39": {
+            "name": "p",
+            "class": "description",
+            "textContent": "You can save your game and load it later. Or you can just use pause button. Also you can choose game field size of color in Settings",
+            "parent": "rules"
+        },
+        "40": {
+            "name": "button",
+            "class": "nav__btn go_back",
+            "attr": {
+                "name" : "data-screen",
+                "value" : "main"
+            },
+            "textContent": "go back",
+            "parent": "rules"
+        },
+        "41": {
+            "name": "div",
+            "class": "screen__container hidden",
+            "attr": {
+                "name" : "data-screen-name",
+                "value" : "win"
+            },
+            "parent": "overlay visible"
+        },
+        "42": {
+            "name": "h2",
+            "class": "screen__title",
+            "textContent": "Congratulations!",
+            "parent": "win"
+        },
+        "43": {
+            "name": "button",
+            "class": "nav__btn go_back",
+            "attr": {
+                "name" : "data-screen",
+                "value" : "main"
+            },
+            "textContent": "go back",
+            "parent": "win"
+        }
+    }
+}
