@@ -39,12 +39,17 @@ export default class Game {
     const emptyChip = empty;
 
     if (this.isNeifhbor(targetElem, emptyChip)) {
-      emptyChip.className = 'chip';
+      this.emptyChipStyle = emptyChip.style;
+      emptyChip.className = (!this.type) ? 'chip' : 'chip image';
       emptyChip.dataset.id = targetElem.dataset.id;
       emptyChip.textContent = targetElem.textContent;
+      emptyChip.style.backgroundPosition = targetElem.style.backgroundPosition;
+
       targetElem.dataset.id = this.default;
       targetElem.textContent = '';
       targetElem.className = 'empty';
+      targetElem.style = this.emptyChipStyle;
+
       if (this.audioNumber) {
         this.audio.currentTime = this.default;
         this.audio.play();
@@ -102,16 +107,33 @@ export default class Game {
     this.gameBoard.style.gridTemplateColumns = `repeat(${this.boardSize}, 1fr)`;
     let div = null;
     this.sortArr = this.generateRandomArr();
+
+    this.generateArrImg();
+
     for (let i = this.default; i < this.boardSize * this.boardSize; i += 1) {
       div = document.createElement('div');
-      div.className = 'chip';
+      if (!this.type) {
+        div.className = 'chip';
+        div.textContent = this.sortArr[i];
+      } else {
+        div.className = 'chip image';
+        div.style.backgroundPosition = this.arrImagPositions[this.sortArr[i]];
+      }
       div.setAttribute('data-id', this.sortArr[i]);
-      div.textContent = this.sortArr[i];
       this.gameBoard.prepend(div);
     }
     const empty = document.querySelector('[data-id="0"]');
     empty.className = 'empty';
     empty.textContent = '';
+  }
+
+  generateArrImg() {
+    this.arrImagPositions = [];
+    for (let i = 0; i < this.boardSize; i += 1) {
+      for (let j = 0; j < this.boardSize; j += 1) {
+        this.arrImagPositions.push(`${99 * (j / (this.boardSize - 1))}% ${99 * (i / (this.boardSize - 1))}%`);
+      }
+    }
   }
 
   clearBoard() {
@@ -122,13 +144,18 @@ export default class Game {
     }
   }
 
-  initDefaultParam(boardSize, audioNumber) {
+  initDefaultParam(boardSize, audioNumber, type) {
+    this.type = type;
     this.minutes = this.default;
     this.seconds = this.default;
     this.moves = this.default;
     this.boardSize = +boardSize;
     this.audioNumber = +audioNumber;
     this.audio = new Audio((this.audioNumber) ? `src/assets/audio/${[this.audioNumber]}.mp3` : '');
+  }
+
+  select(selectBox) {
+    return selectBox.options[selectBox.options.selectedIndex].value;
   }
 }
 
@@ -138,16 +165,17 @@ export default class Game {
   const btnStart = document.querySelector('.start');
   const selectBox = document.querySelector('.select-box');
   const selectAudio = document.querySelector('.select-audio');
+  const selectIcons = document.querySelector('.select-icon-type');
 
   let game = new Game();
-  game.initDefaultParam(selectBox.options[selectBox.options.selectedIndex].value,
-    selectAudio.options[selectAudio.options.selectedIndex].value);
+  game.initDefaultParam(game.select(selectBox), game.select(selectAudio),
+    +game.select(selectIcons));
   game.generateBoard();
 
   btnStart.addEventListener('click', () => {
     game = new Game();
-    game.initDefaultParam(selectBox.options[selectBox.options.selectedIndex].value,
-      selectAudio.options[selectAudio.options.selectedIndex].value);
+    game.initDefaultParam(game.select(selectBox), game.select(selectAudio),
+      +game.select(selectIcons));
     game.clearBoard();
     game.generateBoard();
     game.updateTimer();
@@ -156,7 +184,7 @@ export default class Game {
   });
 
   gameBoard.addEventListener('click', (e) => {
-    if (e.target.className === 'chip') {
+    if (Array.from(e.target.classList).includes('chip')) {
       const emptyChip = document.querySelector('.empty');
       game.changeChip(e.target, emptyChip);
     }
