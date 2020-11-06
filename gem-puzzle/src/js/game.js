@@ -5,6 +5,7 @@ export default class Game {
     this.gameBoard = document.querySelector('.game-board');
     this.timer = document.querySelector('.timer');
     this.counter = document.querySelector('.counter');
+    this.audioTags = document.querySelectorAll('.audio');
     this.default = 0;
   }
 
@@ -44,6 +45,10 @@ export default class Game {
       targetElem.dataset.id = this.default;
       targetElem.textContent = '';
       targetElem.className = 'empty';
+      if (this.audioNumber) {
+        this.audio.currentTime = this.default;
+        this.audio.play();
+      }
 
       this.moves += 1;
       this.updateMoves();
@@ -83,21 +88,25 @@ export default class Game {
     clearInterval(this.interval);
   }
 
-  initDefaultParam(boardSize) {
-    this.minutes = this.default;
-    this.seconds = this.default;
-    this.moves = this.default;
-    this.boardSize = +boardSize;
+  generateRandomArr() {
+    this.sortArr = [];
+    for (let i = 0; i < this.boardSize * this.boardSize; i += 1) {
+      this.sortArr[i] = i;
+    }
+    return this.sortArr.sort(() => {
+      return 0.5 - Math.random();
+    });
   }
 
   generateBoard() {
     this.gameBoard.style.gridTemplateColumns = `repeat(${this.boardSize}, 1fr)`;
     let div = null;
+    this.sortArr = this.generateRandomArr();
     for (let i = this.default; i < this.boardSize * this.boardSize; i += 1) {
       div = document.createElement('div');
       div.className = 'chip';
-      div.setAttribute('data-id', i);
-      div.textContent = i;
+      div.setAttribute('data-id', this.sortArr[i]);
+      div.textContent = this.sortArr[i];
       this.gameBoard.prepend(div);
     }
     const empty = document.querySelector('[data-id="0"]');
@@ -112,6 +121,15 @@ export default class Game {
       i += 1;
     }
   }
+
+  initDefaultParam(boardSize, audioNumber) {
+    this.minutes = this.default;
+    this.seconds = this.default;
+    this.moves = this.default;
+    this.boardSize = +boardSize;
+    this.audioNumber = +audioNumber;
+    this.audio = new Audio((this.audioNumber) ? `src/assets/audio/${[this.audioNumber]}.mp3` : '');
+  }
 }
 
 (() => {
@@ -119,14 +137,17 @@ export default class Game {
   const btnsPause = document.querySelectorAll('.pause');
   const btnStart = document.querySelector('.start');
   const selectBox = document.querySelector('.select-box');
+  const selectAudio = document.querySelector('.select-audio');
 
   let game = new Game();
-  game.initDefaultParam(selectBox.options[selectBox.options.selectedIndex].value);
+  game.initDefaultParam(selectBox.options[selectBox.options.selectedIndex].value,
+    selectAudio.options[selectAudio.options.selectedIndex].value);
   game.generateBoard();
 
   btnStart.addEventListener('click', () => {
     game = new Game();
-    game.initDefaultParam(selectBox.options[selectBox.options.selectedIndex].value);
+    game.initDefaultParam(selectBox.options[selectBox.options.selectedIndex].value,
+      selectAudio.options[selectAudio.options.selectedIndex].value);
     game.clearBoard();
     game.generateBoard();
     game.updateTimer();

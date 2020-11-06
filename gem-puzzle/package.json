@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "file-loader": "^4.2.0",
+    "file-loader": "^4.3.0",
     "pandas": "0.0.3",
     "webpack": "^4.41.2"
   },

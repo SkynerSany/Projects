@@ -138,12 +138,12 @@
             "name": "label",
             "class": "nav__btn",
             "textContent": "Field size: ",
-            "parent": "settings"
+            "parent": "settings-box"
         },
         "11": {
             "name": "select",
             "class": "select-box",
-            "parent": "settings"
+            "parent": "settings-box"
         },
         "12": {
             "name": "option",
@@ -386,6 +386,82 @@
             },
             "textContent": "go back",
             "parent": "win"
+        },
+        "44": {
+            "name": "button",
+            "class": "save-btn",
+            "parent": "screen__container active"
+        },
+        "45": {
+            "name": "div",
+            "class": "settings-audio",
+            "parent": "settings"
+        },
+        "46": {
+            "name": "label",
+            "class": "nav__btn",
+            "textContent": "Melody: ",
+            "parent": "settings-audio"
+        },
+        "47": {
+            "name": "select",
+            "class": "select-audio",
+            "parent": "settings-audio"
+        },
+        "48": {
+            "name": "option",
+            "class": "select-audio-option",
+            "attr": {
+                "name" : "value",
+                "value" : "0"
+            },
+            "textContent": "Mute",
+            "parent": "select-audio"
+        },
+        "49": {
+            "name": "option",
+            "class": "select-audio-option",
+            "attr": {
+                "name" : "value",
+                "value" : "1"
+            },
+            "textContent": "1",
+            "parent": "select-audio"
+        },
+        "50": {
+            "name": "option",
+            "class": "select-audio-option",
+            "attr": {
+                "name" : "value",
+                "value" : "2"
+            },
+            "textContent": "2",
+            "parent": "select-audio"
+        },
+        "51": {
+            "name": "option",
+            "class": "select-audio-option",
+            "attr": {
+                "name" : "value",
+                "value" : "3"
+            },
+            "textContent": "3",
+            "parent": "select-audio"
+        },
+        "52": {
+            "name": "option",
+            "class": "select-audio-option",
+            "attr": {
+                "name" : "value",
+                "value" : "4"
+            },
+            "textContent": "4",
+            "parent": "select-audio"
+        },
+        "53": {
+            "name": "div",
+            "class": "settings-box",
+            "parent": "settings"
         }
     }
 }

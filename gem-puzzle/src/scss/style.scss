@@ -15,7 +15,7 @@ button {
     outline: none;
     cursor: pointer;
     &:hover {
-        background: rgba(231, 76, 60, 1);
+        background-color: rgba(231, 76, 60, 1);
         color: #ffffff;
     }
 }
@@ -110,6 +110,18 @@ button.visible {
     text-shadow: 2px 2px 5px #000;
     color: #ffffff;
     cursor: pointer;
+}
+
+.save-btn {
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    top: -26px;
+    left: -33px;
+    background: url('../assets/icons/save_icon.svg');
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 @keyframes clickOnChip {

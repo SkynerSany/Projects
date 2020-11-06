@@ -18,12 +18,11 @@ module.exports = {
         }),
       },
       {
-        test: /\.(png|jpg|gif)$/i,
-        use: [
-          {
-            loader: 'url-loader',
-          },
-        ],
+        test: /\.mp3$/,
+        use: 'file-loader',
+        options: {
+          name: '[path][name].[ext]',
+        },
       },
     ],
   },
