@@ -498,6 +498,22 @@
             },
             "textContent": "Image",
             "parent": "select-icon-type"
+        },
+        "59": {
+            "name": "option",
+            "class": "select-icon-option",
+            "attr": {
+                "name" : "value",
+                "value" : "2"
+            },
+            "textContent": "Image + Numbers",
+            "parent": "select-icon-type"
+        },
+        "60": {
+            "name": "style",
+            "class": "img-style",
+            "textContent": ".image {background-image: url('src/assets/box/1.jpg');}",
+            "parent": "game-board"
         }
     }
 }
