@@ -1,4 +1,4 @@
-/* global document */
+/* global document, Audio */
 
 export default class Game {
   constructor() {
@@ -26,7 +26,7 @@ export default class Game {
 
   isFinish() {
     const arrChips = Array.from(this.gameBoard.children);
-    for (let i = this.default; i < arrChips.length - 2; i += 1) {
+    for (let i = this.default; i < arrChips.length - 3; i += 1) {
       arrChips[i] = (+arrChips[i].dataset.id === i + 1);
     }
     if (arrChips.indexOf(false) === -1) {
@@ -39,12 +39,17 @@ export default class Game {
     const emptyChip = empty;
 
     if (this.isNeifhbor(targetElem, emptyChip)) {
-      emptyChip.className = 'chip';
+      this.emptyChipStyle = emptyChip.style.backgroundPosition;
+      emptyChip.className = (!this.type) ? 'chip' : 'chip image';
       emptyChip.dataset.id = targetElem.dataset.id;
       emptyChip.textContent = targetElem.textContent;
+      emptyChip.style.backgroundPosition = targetElem.style.backgroundPosition;
+
       targetElem.dataset.id = this.default;
       targetElem.textContent = '';
       targetElem.className = 'empty';
+      targetElem.style = this.emptyChipStyle;
+
       if (this.audioNumber) {
         this.audio.currentTime = this.default;
         this.audio.play();
@@ -88,25 +93,54 @@ export default class Game {
     clearInterval(this.interval);
   }
 
-  generateRandomArr() {
+  generateRandomNumbres() {
     this.sortArr = [];
-    for (let i = 0; i < this.boardSize * this.boardSize; i += 1) {
+    for (let i = this.default; i < this.boardSize * this.boardSize; i += 1) {
       this.sortArr[i] = i;
     }
-    return this.sortArr.sort(() => {
-      return 0.5 - Math.random();
-    });
+    return this.sortArr.sort(() => 0.5 - Math.random());
+  }
+
+  generateArrImgPos() {
+    this.arrImagPositions = [];
+    for (let i = this.default; i < this.boardSize; i += 1) {
+      for (let j = this.default; j < this.boardSize; j += 1) {
+        this.arrImagPositions.push(`${99 * (j / (this.boardSize - 1))}% ${99 * (i / (this.boardSize - 1))}%`);
+      }
+    }
+  }
+
+  switchBgStyle() {
+    const style = document.querySelector('.img-style');
+    style.textContent = `.image {background-image: ${this.imgSrc};}`;
+    if (this.type === 2) {
+      style.textContent = `.image {background-image: ${this.imgSrc}; color: #ffffff; text-shadow: 2px 2px 5px #000;}`;
+    }
   }
 
   generateBoard() {
     this.gameBoard.style.gridTemplateColumns = `repeat(${this.boardSize}, 1fr)`;
     let div = null;
-    this.sortArr = this.generateRandomArr();
+
+    this.sortArr = this.generateRandomNumbres();
+    this.generateArrImgPos();
+    this.switchBgStyle();
+
     for (let i = this.default; i < this.boardSize * this.boardSize; i += 1) {
       div = document.createElement('div');
-      div.className = 'chip';
+
+      if (!this.type) {
+        div.className = 'chip';
+        div.textContent = this.sortArr[i];
+      } else {
+        div.className = 'chip image';
+        div.style.backgroundPosition = this.arrImagPositions[this.sortArr[i] - 1];
+        if (this.type === 2) {
+          div.textContent = this.sortArr[i];
+        }
+      }
+
       div.setAttribute('data-id', this.sortArr[i]);
-      div.textContent = this.sortArr[i];
       this.gameBoard.prepend(div);
     }
     const empty = document.querySelector('[data-id="0"]');
@@ -115,20 +149,27 @@ export default class Game {
   }
 
   clearBoard() {
-    let i = 0;
-    while (this.gameBoard.children[0].className !== 'overlay') {
+    let i = this.default;
+    while (this.gameBoard.children[this.default].className !== 'overlay') {
       this.gameBoard.removeChild(document.querySelector(`[data-id="${i}"]`));
       i += 1;
     }
   }
 
-  initDefaultParam(boardSize, audioNumber) {
+  select(selectBox) {
+    this.selectBox = selectBox;
+    return this.selectBox.options[this.selectBox.options.selectedIndex].value;
+  }
+
+  initDefaultParam(boardSize, audioNumber, type) {
+    this.type = type;
     this.minutes = this.default;
     this.seconds = this.default;
     this.moves = this.default;
     this.boardSize = +boardSize;
     this.audioNumber = +audioNumber;
     this.audio = new Audio((this.audioNumber) ? `src/assets/audio/${[this.audioNumber]}.mp3` : '');
+    this.imgSrc = `url("src/assets/box/${Math.floor(Math.random() * (150 - 1) + 1)}.jpg")`;
   }
 }
 
@@ -138,16 +179,17 @@ export default class Game {
   const btnStart = document.querySelector('.start');
   const selectBox = document.querySelector('.select-box');
   const selectAudio = document.querySelector('.select-audio');
+  const selectIcons = document.querySelector('.select-icon-type');
 
   let game = new Game();
-  game.initDefaultParam(selectBox.options[selectBox.options.selectedIndex].value,
-    selectAudio.options[selectAudio.options.selectedIndex].value);
+  game.initDefaultParam(game.select(selectBox), game.select(selectAudio),
+    +game.select(selectIcons));
   game.generateBoard();
 
   btnStart.addEventListener('click', () => {
     game = new Game();
-    game.initDefaultParam(selectBox.options[selectBox.options.selectedIndex].value,
-      selectAudio.options[selectAudio.options.selectedIndex].value);
+    game.initDefaultParam(game.select(selectBox), game.select(selectAudio),
+      +game.select(selectIcons));
     game.clearBoard();
     game.generateBoard();
     game.updateTimer();
@@ -156,7 +198,7 @@ export default class Game {
   });
 
   gameBoard.addEventListener('click', (e) => {
-    if (e.target.className === 'chip') {
+    if (Array.from(e.target.classList).includes('chip')) {
       const emptyChip = document.querySelector('.empty');
       game.changeChip(e.target, emptyChip);
     }

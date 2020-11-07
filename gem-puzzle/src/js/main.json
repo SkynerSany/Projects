@@ -462,6 +462,58 @@
             "name": "div",
             "class": "settings-box",
             "parent": "settings"
+        },
+        "54": {
+            "name": "div",
+            "class": "settings-icons",
+            "parent": "settings"
+        },
+        "55": {
+            "name": "label",
+            "class": "nav__btn",
+            "textContent": "Icons type: ",
+            "parent": "settings-icons"
+        },
+        "56": {
+            "name": "select",
+            "class": "select-icon-type",
+            "parent": "settings-icons"
+        },
+        "57": {
+            "name": "option",
+            "class": "select-icon-option",
+            "attr": {
+                "name" : "value",
+                "value" : "0"
+            },
+            "textContent": "Numbers",
+            "parent": "select-icon-type"
+        },
+        "58": {
+            "name": "option",
+            "class": "select-icon-option",
+            "attr": {
+                "name" : "value",
+                "value" : "1"
+            },
+            "textContent": "Image",
+            "parent": "select-icon-type"
+        },
+        "59": {
+            "name": "option",
+            "class": "select-icon-option",
+            "attr": {
+                "name" : "value",
+                "value" : "2"
+            },
+            "textContent": "Image + Numbers",
+            "parent": "select-icon-type"
+        },
+        "60": {
+            "name": "style",
+            "class": "img-style",
+            "textContent": ".image {background-image: url('src/assets/box/1.jpg');}",
+            "parent": "game-board"
         }
     }
 }

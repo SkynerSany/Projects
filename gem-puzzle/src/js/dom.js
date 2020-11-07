@@ -61,5 +61,4 @@ export default class Dom {
   const dom = new Dom();
 
   dom.addToBody();
-
 })();

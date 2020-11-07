@@ -18,12 +18,9 @@ module.exports = {
         }),
       },
       {
-        test: /\.mp3$/,
+        test: /\.(svg|jpg|png)$/,
         use: 'file-loader',
-        options: {
-          name: '[path][name].[ext]',
-        },
-      },
+      }
     ],
   },
   plugins: [
