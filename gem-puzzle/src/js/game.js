@@ -1,11 +1,14 @@
 /* global document, Audio */
 
+import Settings from './settings';
+
 export default class Game {
   constructor() {
     this.gameBoard = document.querySelector('.game-board');
     this.timer = document.querySelector('.timer');
     this.counter = document.querySelector('.counter');
     this.audioTags = document.querySelectorAll('.audio');
+    this.settings = new Settings();
     this.default = 0;
   }
 
@@ -30,8 +33,45 @@ export default class Game {
       arrChips[i] = (+arrChips[i].dataset.id === i + 1);
     }
     if (arrChips.indexOf(false) === -1) {
-      console.log('congratulation');
-    } else console.log('fail');
+      this.finish();
+    }
+  }
+
+  finish() {
+    this.stopTimer();
+    const date = new Date();
+    const strDate = `${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`;
+    this.openWinLayer();
+    new Audio('src/assets/audio/congratulations.mp3').play();
+    this.updateBestScore(strDate, this.moves, `${this.boardSize}x${this.boardSize}`, this.time);
+  }
+
+  openWinLayer() {
+    const winBox = document.querySelector('[data-screen-name="win"]');
+    const prevMenu = document.querySelector('.active');
+    this.settings.changeVisibleSettings(true);
+
+    prevMenu.classList.remove('active');
+    prevMenu.classList.add('hidden');
+
+    winBox.classList.remove('hidden');
+    winBox.classList.add('active');
+
+    if (this.type) {
+      const congratImg = document.querySelector('.screen__img');
+      congratImg.style.display = 'block';
+    }
+  }
+
+  updateBestScore(...args) {
+    this.result = Array.from(document.querySelector('.results').children);
+    let div = null;
+    this.result.forEach((item, i) => {
+      div = document.createElement('div');
+      div.className = `${item.className}-text`;
+      div.textContent = args[i];
+      item.append(div);
+    });
   }
 
   changeChip(target, empty) {
@@ -74,7 +114,8 @@ export default class Game {
   }
 
   updateTimer() {
-    this.timer.textContent = `${this.addZero(this.minutes)} : ${this.addZero(this.seconds)}`;
+    this.time = `${this.addZero(this.minutes)} : ${this.addZero(this.seconds)}`;
+    this.timer.textContent = this.time;
   }
 
   updateMoves() {

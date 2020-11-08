@@ -17,6 +17,9 @@ export default class Dom {
       if (objElements[key].attr) {
         tag.setAttribute(objElements[key].attr.name, objElements[key].attr.value);
       }
+      if (objElements[key].attr1) {
+        tag.setAttribute(objElements[key].attr1.name, '');
+      }
       if (objElements[key].textContent) {
         tag.textContent = objElements[key].textContent;
       }
