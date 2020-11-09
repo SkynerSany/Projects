@@ -1,6 +1,6 @@
-/* global document, Audio */
+/* global document, Audio, window */
 
-import Settings from './settings';
+import Dom from './dom';
 
 export default class Game {
   constructor() {
@@ -8,7 +8,8 @@ export default class Game {
     this.timer = document.querySelector('.timer');
     this.counter = document.querySelector('.counter');
     this.audioTags = document.querySelectorAll('.audio');
-    this.settings = new Settings();
+    this.btnsPause = document.querySelectorAll('.pause');
+    this.dom = new Dom();
     this.default = 0;
   }
 
@@ -41,54 +42,14 @@ export default class Game {
     this.stopTimer();
     const date = new Date();
     const strDate = `${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`;
-    this.openWinLayer();
+    this.dom.openWinLayer(this.type);
     new Audio('src/assets/audio/congratulations.mp3').play();
-    this.updateBestScore(strDate, this.moves, `${this.boardSize}x${this.boardSize}`, this.time);
-  }
-
-  openWinLayer() {
-    const winBox = document.querySelector('[data-screen-name="win"]');
-    const prevMenu = document.querySelector('.active');
-    this.settings.changeVisibleSettings(true);
-
-    prevMenu.classList.remove('active');
-    prevMenu.classList.add('hidden');
-
-    winBox.classList.remove('hidden');
-    winBox.classList.add('active');
-
-    if (this.type) {
-      const congratImg = document.querySelector('.screen__img');
-      congratImg.style.display = 'block';
-    }
-  }
-
-  updateBestScore(...args) {
-    this.result = Array.from(document.querySelector('.results').children);
-    let div = null;
-    this.result.forEach((item, i) => {
-      div = document.createElement('div');
-      div.className = `${item.className}-text`;
-      div.textContent = args[i];
-      item.append(div);
-    });
+    this.dom.updateBestScore(strDate, this.moves, `${this.boardSize}x${this.boardSize}`, this.time);
   }
 
   changeChip(target, empty) {
-    const targetElem = target;
-    const emptyChip = empty;
-
-    if (this.isNeifhbor(targetElem, emptyChip)) {
-      this.emptyChipStyle = emptyChip.style.backgroundPosition;
-      emptyChip.className = (!this.type) ? 'chip' : 'chip image';
-      emptyChip.dataset.id = targetElem.dataset.id;
-      emptyChip.textContent = targetElem.textContent;
-      emptyChip.style.backgroundPosition = targetElem.style.backgroundPosition;
-
-      targetElem.dataset.id = this.default;
-      targetElem.textContent = '';
-      targetElem.className = 'empty';
-      targetElem.style = this.emptyChipStyle;
+    if (this.isNeifhbor(target, empty)) {
+      this.dom.switchClassChips(target, empty, this.type);
 
       if (this.audioNumber) {
         this.audio.currentTime = this.default;
@@ -113,13 +74,13 @@ export default class Game {
     }
   }
 
-  updateTimer() {
-    this.time = `${this.addZero(this.minutes)} : ${this.addZero(this.seconds)}`;
+  updateTimer(minutes = this.minutes, seconds = this.seconds) {
+    this.time = `${this.addZero(minutes)} : ${this.addZero(seconds)}`;
     this.timer.textContent = this.time;
   }
 
-  updateMoves() {
-    this.counter.textContent = this.moves;
+  updateMoves(moves = this.moves) {
+    this.counter.textContent = moves;
   }
 
   startTimer() {
@@ -151,105 +112,91 @@ export default class Game {
     }
   }
 
-  switchBgStyle() {
-    const style = document.querySelector('.img-style');
-    style.textContent = `.image {background-image: ${this.imgSrc};}`;
-    if (this.type === 2) {
-      style.textContent = `.image {background-image: ${this.imgSrc}; color: #ffffff; text-shadow: 2px 2px 5px #000;}`;
-    }
-  }
-
-  generateBoard() {
-    this.gameBoard.style.gridTemplateColumns = `repeat(${this.boardSize}, 1fr)`;
-    let div = null;
-
-    this.sortArr = this.generateRandomNumbres();
+  generateBoard(sortArr = this.generateRandomNumbres(), imgSrc = this.imgSrc) {
+    this.dom.generateTable(this.boardSize);
     this.generateArrImgPos();
-    this.switchBgStyle();
+    this.dom.switchBgStyle(this.type, imgSrc);
+    this.dom.generateChips(this.boardSize, this.type, sortArr, this.arrImagPositions);
 
-    for (let i = this.default; i < this.boardSize * this.boardSize; i += 1) {
-      div = document.createElement('div');
-
-      if (!this.type) {
-        div.className = 'chip';
-        div.textContent = this.sortArr[i];
-      } else {
-        div.className = 'chip image';
-        div.style.backgroundPosition = this.arrImagPositions[this.sortArr[i] - 1];
-        if (this.type === 2) {
-          div.textContent = this.sortArr[i];
-        }
-      }
-
-      div.setAttribute('data-id', this.sortArr[i]);
-      this.gameBoard.prepend(div);
-    }
-    const empty = document.querySelector('[data-id="0"]');
-    empty.className = 'empty';
-    empty.textContent = '';
-  }
-
-  clearBoard() {
-    let i = this.default;
-    while (this.gameBoard.children[this.default].className !== 'overlay') {
-      this.gameBoard.removeChild(document.querySelector(`[data-id="${i}"]`));
-      i += 1;
-    }
+    this.updateTimer();
+    this.updateMoves();
   }
 
   select(selectBox) {
-    this.selectBox = selectBox;
-    return this.selectBox.options[this.selectBox.options.selectedIndex].value;
+    return selectBox.options[selectBox.options.selectedIndex].value;
   }
 
-  initDefaultParam(boardSize, audioNumber, type) {
+  selectArr() {
+    const selectBox = document.querySelector('.select-box');
+    const selectAudio = document.querySelector('.select-audio');
+    const selectIcons = document.querySelector('.select-icon-type');
+
+    return [this.select(selectBox), this.select(selectAudio),
+      +this.select(selectIcons)];
+  }
+
+  startGame(boardSize, audioNumber, type, minutes,
+    seconds, moves, rundomNumbers, imgSrc) {
+    this.generateEvents();
+    this.dom.switchVisibleBtn(1, 0);
+    this.dom.changeVisibleSettings(false);
+
+    this.game = new Game();
+    this.initDefaultParam(boardSize, audioNumber, type, minutes,
+      seconds, moves);
+    this.dom.clearBoard();
+    this.generateBoard(rundomNumbers, imgSrc);
+    this.startTimer();
+
+    this.btnsPause[0].addEventListener('click', () => {
+      this.stopTimer();
+    });
+
+    this.btnsPause[1].addEventListener('click', () => {
+      this.startTimer();
+    });
+  }
+
+  initDefaultParam(boardSize, audioNumber, type, minutes = this.default,
+    seconds = this.default, moves = this.default) {
     this.type = type;
-    this.minutes = this.default;
-    this.seconds = this.default;
-    this.moves = this.default;
+    this.minutes = minutes;
+    this.seconds = seconds;
+    this.moves = moves;
     this.boardSize = +boardSize;
     this.audioNumber = +audioNumber;
     this.audio = new Audio((this.audioNumber) ? `src/assets/audio/${[this.audioNumber]}.mp3` : '');
     this.imgSrc = `url("src/assets/box/${Math.floor(Math.random() * (150 - 1) + 1)}.jpg")`;
   }
+
+  generateEvents() {
+    this.btnStart = document.querySelector('.start');
+    this.selectBox = document.querySelector('.select-box');
+    this.selectAudio = document.querySelector('.select-audio');
+    this.selectIcons = document.querySelector('.select-icon-type');
+    this.saveBtn = document.querySelector('.save-btn');
+
+    this.btnStart.addEventListener('click', () => {
+      this.startGame(this.select(this.selectBox),
+        this.select(this.selectAudio), +this.select(this.selectIcons));
+    });
+
+    this.gameBoard.addEventListener('click', (e) => {
+      if (Array.from(e.target.classList).includes('chip')) {
+        const emptyChip = document.querySelector('.empty');
+        this.changeChip(e.target, emptyChip);
+      }
+    });
+  }
 }
 
 (() => {
-  const gameBoard = document.querySelector('.game-board');
-  const btnsPause = document.querySelectorAll('.pause');
-  const btnStart = document.querySelector('.start');
-  const selectBox = document.querySelector('.select-box');
-  const selectAudio = document.querySelector('.select-audio');
-  const selectIcons = document.querySelector('.select-icon-type');
+  const game = new Game();
 
-  let game = new Game();
-  game.initDefaultParam(game.select(selectBox), game.select(selectAudio),
-    +game.select(selectIcons));
-  game.generateBoard();
+  game.generateEvents();
 
-  btnStart.addEventListener('click', () => {
-    game = new Game();
-    game.initDefaultParam(game.select(selectBox), game.select(selectAudio),
-      +game.select(selectIcons));
-    game.clearBoard();
+  window.onload = () => {
+    game.initDefaultParam(...game.selectArr());
     game.generateBoard();
-    game.updateTimer();
-    game.updateMoves();
-    game.startTimer();
-  });
-
-  gameBoard.addEventListener('click', (e) => {
-    if (Array.from(e.target.classList).includes('chip')) {
-      const emptyChip = document.querySelector('.empty');
-      game.changeChip(e.target, emptyChip);
-    }
-  });
-
-  btnsPause[0].addEventListener('click', () => {
-    game.stopTimer();
-  });
-
-  btnsPause[1].addEventListener('click', () => {
-    game.startTimer();
-  });
+  };
 })();
