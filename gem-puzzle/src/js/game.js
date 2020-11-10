@@ -9,6 +9,9 @@ export default class Game {
     this.counter = document.querySelector('.counter');
     this.audioTags = document.querySelectorAll('.audio');
     this.btnsPause = document.querySelectorAll('.pause');
+    this.selectBox = document.querySelector('.select-box');
+    this.selectAudio = document.querySelector('.select-audio');
+    this.selectIcons = document.querySelector('.select-icon-type');
     this.dom = new Dom();
     this.default = 0;
   }
@@ -41,7 +44,7 @@ export default class Game {
   finish() {
     this.stopTimer();
     const date = new Date();
-    const strDate = `${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`;
+    const strDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
     this.dom.openWinLayer(this.type);
     new Audio('src/assets/audio/congratulations.mp3').play();
     this.dom.updateBestScore(strDate, this.moves, `${this.boardSize}x${this.boardSize}`, this.time);
@@ -62,11 +65,6 @@ export default class Game {
     }
   }
 
-  addZero(number) {
-    this.number = (number < 10) ? `0${number}` : number;
-    return this.number;
-  }
-
   checkMinutes() {
     if (this.seconds === 60) {
       this.seconds = this.default;
@@ -75,7 +73,7 @@ export default class Game {
   }
 
   updateTimer(minutes = this.minutes, seconds = this.seconds) {
-    this.time = `${this.addZero(minutes)} : ${this.addZero(seconds)}`;
+    this.time = `${this.dom.addZero(minutes)} : ${this.dom.addZero(seconds)}`;
     this.timer.textContent = this.time;
   }
 
@@ -127,17 +125,24 @@ export default class Game {
   }
 
   selectArr() {
-    const selectBox = document.querySelector('.select-box');
-    const selectAudio = document.querySelector('.select-audio');
-    const selectIcons = document.querySelector('.select-icon-type');
+    return [this.select(this.selectBox), this.select(this.selectAudio),
+      +this.select(this.selectIcons)];
+  }
 
-    return [this.select(selectBox), this.select(selectAudio),
-      +this.select(selectIcons)];
+  loadGame(count = 0) {
+    const gameSettings = JSON.parse(window.localStorage.saves)[count];
+
+    this.selectAudio.options[gameSettings.audio].selected = true;
+    this.selectBox.options[`${gameSettings.size - 3}`].selected = true;
+    this.selectIcons.options[`${gameSettings.type}`].selected = true;
+
+    this.startGame(gameSettings.size,
+      gameSettings.audio, +gameSettings.type, gameSettings.minutes,
+      gameSettings.seconds, gameSettings.moves, gameSettings.randomNumbers, gameSettings.imgSrc);
   }
 
   startGame(boardSize, audioNumber, type, minutes,
     seconds, moves, rundomNumbers, imgSrc) {
-    this.generateEvents();
     this.dom.switchVisibleBtn(1, 0);
     this.dom.changeVisibleSettings(false);
 
@@ -147,14 +152,6 @@ export default class Game {
     this.dom.clearBoard();
     this.generateBoard(rundomNumbers, imgSrc);
     this.startTimer();
-
-    this.btnsPause[0].addEventListener('click', () => {
-      this.stopTimer();
-    });
-
-    this.btnsPause[1].addEventListener('click', () => {
-      this.startTimer();
-    });
   }
 
   initDefaultParam(boardSize, audioNumber, type, minutes = this.default,
@@ -168,35 +165,4 @@ export default class Game {
     this.audio = new Audio((this.audioNumber) ? `src/assets/audio/${[this.audioNumber]}.mp3` : '');
     this.imgSrc = `url("src/assets/box/${Math.floor(Math.random() * (150 - 1) + 1)}.jpg")`;
   }
-
-  generateEvents() {
-    this.btnStart = document.querySelector('.start');
-    this.selectBox = document.querySelector('.select-box');
-    this.selectAudio = document.querySelector('.select-audio');
-    this.selectIcons = document.querySelector('.select-icon-type');
-    this.saveBtn = document.querySelector('.save-btn');
-
-    this.btnStart.addEventListener('click', () => {
-      this.startGame(this.select(this.selectBox),
-        this.select(this.selectAudio), +this.select(this.selectIcons));
-    });
-
-    this.gameBoard.addEventListener('click', (e) => {
-      if (Array.from(e.target.classList).includes('chip')) {
-        const emptyChip = document.querySelector('.empty');
-        this.changeChip(e.target, emptyChip);
-      }
-    });
-  }
 }
-
-(() => {
-  const game = new Game();
-
-  game.generateEvents();
-
-  window.onload = () => {
-    game.initDefaultParam(...game.selectArr());
-    game.generateBoard();
-  };
-})();

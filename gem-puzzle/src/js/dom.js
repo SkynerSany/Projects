@@ -1,4 +1,4 @@
-/* global document */
+/* global document, window */
 
 import * as main from './main.json';
 
@@ -9,6 +9,9 @@ export default class Dom {
     this.btnsPause = document.querySelectorAll('.pause');
     this.overlay = document.querySelector('.overlay');
     this.gameBoard = document.querySelector('.game-board');
+    this.text = document.querySelectorAll('.slider__description-info');
+    this.image = document.querySelector('.slider__image');
+    this.arrowBtn = document.querySelectorAll('.slider__arrow');
     this.default = 0;
   }
 
@@ -44,6 +47,11 @@ export default class Dom {
       }
     });
     return arrElements[0];
+  }
+
+  addZero(number) {
+    this.number = (number < 10) ? `0${number}` : number;
+    return this.number;
   }
 
   generateHeader() {
@@ -174,6 +182,41 @@ export default class Dom {
     targetElem.textContent = '';
     targetElem.className = 'empty';
     targetElem.style = emptyChipStyle;
+  }
+
+  generateslider() {
+    const noSaves = document.querySelector('.noSaves');
+    const slider = document.querySelector('.slider');
+
+    noSaves.style.display = 'none';
+    slider.style.display = 'flex';
+
+    this.switchSaves();
+    this.image.setAttribute('data-save', 0);
+  }
+
+  switchSaves(count = 0) {
+    this.saves = JSON.parse(window.localStorage.saves);
+    if (!count) {
+      this.arrowBtn[0].disabled = true;
+      if (Object.keys(this.saves).length === 1) {
+        this.arrowBtn[1].disabled = true;
+      } else {
+        this.arrowBtn[1].disabled = false;
+      }
+    } else if (count === Object.keys(this.saves).length - 1) {
+      this.arrowBtn[1].disabled = true;
+      this.arrowBtn[0].disabled = false;
+    } else {
+      this.arrowBtn[0].disabled = false;
+      this.arrowBtn[1].disabled = false;
+    }
+    this.image.dataset.save = count;
+    this.image.style.background = `url(${this.saves[count].gameImg}) -2px 0 / cover`;
+
+    this.text[0].textContent = `Board size: ${this.saves[count].size}x${this.saves[count].size}`;
+    this.text[1].textContent = `Time: ${this.addZero(this.saves[count].minutes)} : ${this.addZero(this.saves[count].seconds)}`;
+    this.text[2].textContent = `Moves: ${this.saves[count].moves}`;
   }
 }
 

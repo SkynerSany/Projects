@@ -18,6 +18,9 @@ button {
         background-color: rgba(231, 76, 60, 1);
         color: #ffffff;
     }
+    &:disabled {
+        background: gray;
+    }
 }
 
 button.visible {
@@ -32,6 +35,10 @@ button.visible {
     justify-content: space-between;
     align-items: flex-end;
     padding-bottom: 10px;
+}
+
+.screen__title {
+    font-size: 30px;
 }
 
 .pause {
@@ -95,12 +102,13 @@ button.visible {
 }
 
 .screen__container {
+    width: 80%;
+    margin: 8% auto;
     position: relative;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 80%;
-    margin: 8% auto;
+    color: lawngreen;
 }
 
 .hidden {
@@ -160,6 +168,46 @@ button.visible {
     &:hover {
         opacity: 1;
     }
+}
+
+.slider {
+    width: 100%;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.slider__game {
+    width: 250px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.slider__arrow {
+    padding-bottom: 5px;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 28px;
+    color: #ffffff;
+    font-size: 35px;
+}
+
+.slider__description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.slider__description-load {
+    color: #ffffff;
+}
+
+.slider__image {
+    height: 120px;
+    width: 120px;
 }
 
 @keyframes clickOnChip {

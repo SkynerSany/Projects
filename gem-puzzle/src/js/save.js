@@ -42,9 +42,9 @@ export default class Save {
     this.dom.changeVisibleSettings(false);
     this.gameBoard.style.border = 'none';
     const saveArr = this.getGameInfo();
-    this.dom.changeVisibleSettings(true);
 
     html2canvas(document.querySelector('.game-board')).then((canvas) => {
+      this.dom.changeVisibleSettings(true);
       const time = document.querySelector('.timer').textContent.split(' : ');
       const gameObj = {
         size: +saveArr[this.default],
@@ -55,7 +55,7 @@ export default class Save {
         moves: +document.querySelector('.counter').textContent,
         minutes: +time[this.default],
         seconds: +time[1],
-        gameImg: canvas.toDataURL(),
+        gameImg: canvas.toDataURL('image/jpeg'),
       };
 
       if (this.inLoacalStorage('saves')) {
@@ -65,6 +65,7 @@ export default class Save {
       } else {
         window.localStorage.setItem('saves', JSON.stringify({ 0: gameObj }));
       }
+      this.loadSlider();
     });
   }
 
@@ -82,25 +83,37 @@ export default class Save {
     return this.gameInfo;
   }
 
-  loadGame() {
-    const gameSettings = JSON.parse(window.localStorage.saves)[0];
+  saveScore() {
+    const scoresObj = {};
+    const resultsChild = Array.from(document.querySelector('.results').children);
+    resultsChild.forEach((item, i) => {
+      Array.from(item.children).forEach((elem, j, arr) => {
+        if (j !== 0) {
+          if (!scoresObj[`${j - 1}`]) {
+            scoresObj[`${j - 1}`] = {};
+          }
+          scoresObj[`${j - 1}`][arr[0].textContent] = elem.textContent;
+        }
+      });
+    });
 
-    this.game = new Game();
+    if (this.inLoacalStorage('scores')) {
+      window.localStorage.scores = JSON.stringify(scoresObj);
+    } else {
+      window.localStorage.setItem('scores', JSON.stringify(scoresObj));
+    }
+  }
 
-    this.selectAudio.options[gameSettings.audio].selected = true;
-    this.selectBox.options[`${gameSettings.size - 3}`].selected = true;
-    this.selectIcons.options[`${gameSettings.type}`].selected = true;
+  loadScore() {
+    const scores = JSON.parse(window.localStorage.scores);
+    for (let i = 0; i < Object.keys(scores).length; i += 1) {
+      this.dom.updateBestScore(scores[i].Date, scores[i].Moves, scores[i].Size, scores[i].Time);
+    }
+  }
 
-    this.game.startGame(gameSettings.size,
-      gameSettings.audio, +gameSettings.type, gameSettings.minutes,
-      gameSettings.seconds, gameSettings.moves, gameSettings.randomNumbers, gameSettings.imgSrc);
+  loadSlider() {
+    if (this.inLoacalStorage('saves')) {
+      this.dom.generateslider();
+    }
   }
 }
-
-(() => {
-  const save = new Save();
-  save.loadSetitngs();
-  window.onunload = () => {
-    save.saveSettings();
-  };
-})();
