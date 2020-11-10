@@ -1,5 +1,6 @@
 import '../scss/style.scss';
 import './main.json';
 import './dom';
-import './settings';
+import './save';
 import './game';
+import './events';

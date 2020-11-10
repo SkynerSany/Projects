@@ -162,6 +162,9 @@
                 "name" : "value",
                 "value" : "4"
             },
+            "attr1": {
+                "name" : "selected"
+            },
             "textContent": "4x4",
             "parent": "select-box"
         },
@@ -206,209 +209,22 @@
             "parent": "select-box"
         },
         "18": {
-            "name": "span",
-            "class": "info-option",
-            "parent": "settings"
-        },
-        "19": {
-            "name": "button",
-            "class": "nav__btn go_back",
-            "attr": {
-                "name" : "data-screen",
-                "value" : "main"
-            },
-            "textContent": "go back",
-            "parent": "settings"
-        },
-        "20": {
-            "name": "div",
-            "class": "screen__container hidden",
-            "attr": {
-                "name" : "data-screen-name",
-                "value" : "saved_games"
-            },
-            "parent": "overlay visible"
-        },
-        "21": {
-            "name": "h2",
-            "class": "screen__title",
-            "textContent": "Saved games:",
-            "parent": "saved_games"
-        },
-        "22": {
-            "name": "div",
-            "class": "noSaves",
-            "textContent": "There is no any saved games yet!",
-            "parent": "saved_games"
-        },
-        "23": {
-            "name": "button",
-            "class": "nav__btn go_back",
-            "attr": {
-                "name" : "data-screen",
-                "value" : "main"
-            },
-            "textContent": "go back",
-            "parent": "saved_games"
-        },
-        "24": {
-            "name": "div",
-            "class": "screen__container hidden",
-            "attr": {
-                "name" : "data-screen-name",
-                "value" : "best_scores"
-            },
-            "parent": "overlay visible"
-        },
-        "25": {
-            "name": "h2",
-            "class": "screen__title",
-            "textContent": "Best scores",
-            "parent": "best_scores"
-        },
-        "26": {
-            "name": "div",
-            "class": "results",
-            "parent": "best_scores"
-        },
-        "27": {
-            "name": "div",
-            "class": "date",
-            "parent": "results"
-        },
-        "28": {
-            "name": "div",
-            "class": "subtitle",
-            "textContent": "Date",
-            "parent": "date"
-        },
-        "29": {
-            "name": "div",
-            "class": "moves",
-            "parent": "results"
-        },
-        "30": {
-            "name": "div",
-            "class": "subtitle",
-            "textContent": "Moves",
-            "parent": "moves"
-        },
-        "31": {
-            "name": "div",
-            "class": "size",
-            "parent": "results"
-        },
-        "32": {
-            "name": "div",
-            "class": "subtitle",
-            "textContent": "Size",
-            "parent": "size"
-        },
-        "33": {
-            "name": "div",
-            "class": "time",
-            "parent": "results"
-        },
-        "34": {
-            "name": "div",
-            "class": "subtitle",
-            "textContent": "Time",
-            "parent": "time"
-        },
-        "35": {
-            "name": "button",
-            "class": "nav__btn go_back",
-            "attr": {
-                "name" : "data-screen",
-                "value" : "main"
-            },
-            "textContent": "go back",
-            "parent": "best_scores"
-        },
-        "36": {
-            "name": "div",
-            "class": "screen__container hidden",
-            "attr": {
-                "name" : "data-screen-name",
-                "value" : "rules"
-            },
-            "parent": "overlay visible"
-        },
-        "37": {
-            "name": "h2",
-            "class": "screen__title",
-            "textContent": "Rules of Gem Puzzle",
-            "parent": "rules"
-        },
-        "38": {
-            "name": "p",
-            "class": "description",
-            "textContent": "The object of the puzzle is to place the tiles in order by making sliding moves that use the empty space.",
-            "parent": "rules"
-        },
-        "39": {
-            "name": "p",
-            "class": "description",
-            "textContent": "You can save your game and load it later. Or you can just use pause button. Also you can choose game field size of color in Settings",
-            "parent": "rules"
-        },
-        "40": {
-            "name": "button",
-            "class": "nav__btn go_back",
-            "attr": {
-                "name" : "data-screen",
-                "value" : "main"
-            },
-            "textContent": "go back",
-            "parent": "rules"
-        },
-        "41": {
-            "name": "div",
-            "class": "screen__container hidden",
-            "attr": {
-                "name" : "data-screen-name",
-                "value" : "win"
-            },
-            "parent": "overlay visible"
-        },
-        "42": {
-            "name": "h2",
-            "class": "screen__title",
-            "textContent": "Congratulations!",
-            "parent": "win"
-        },
-        "43": {
-            "name": "button",
-            "class": "nav__btn go_back",
-            "attr": {
-                "name" : "data-screen",
-                "value" : "main"
-            },
-            "textContent": "go back",
-            "parent": "win"
-        },
-        "44": {
-            "name": "button",
-            "class": "save-btn",
-            "parent": "screen__container active"
-        },
-        "45": {
             "name": "div",
             "class": "settings-audio",
             "parent": "settings"
         },
-        "46": {
+        "19": {
             "name": "label",
             "class": "nav__btn",
             "textContent": "Melody: ",
             "parent": "settings-audio"
         },
-        "47": {
+        "20": {
             "name": "select",
             "class": "select-audio",
             "parent": "settings-audio"
         },
-        "48": {
+        "21": {
             "name": "option",
             "class": "select-audio-option",
             "attr": {
@@ -418,7 +234,7 @@
             "textContent": "Mute",
             "parent": "select-audio"
         },
-        "49": {
+        "22": {
             "name": "option",
             "class": "select-audio-option",
             "attr": {
@@ -428,7 +244,7 @@
             "textContent": "1",
             "parent": "select-audio"
         },
-        "50": {
+        "23": {
             "name": "option",
             "class": "select-audio-option",
             "attr": {
@@ -438,7 +254,7 @@
             "textContent": "2",
             "parent": "select-audio"
         },
-        "51": {
+        "24": {
             "name": "option",
             "class": "select-audio-option",
             "attr": {
@@ -448,7 +264,7 @@
             "textContent": "3",
             "parent": "select-audio"
         },
-        "52": {
+        "25": {
             "name": "option",
             "class": "select-audio-option",
             "attr": {
@@ -458,28 +274,28 @@
             "textContent": "4",
             "parent": "select-audio"
         },
-        "53": {
+        "26": {
             "name": "div",
             "class": "settings-box",
             "parent": "settings"
         },
-        "54": {
+        "27": {
             "name": "div",
             "class": "settings-icons",
             "parent": "settings"
         },
-        "55": {
+        "28": {
             "name": "label",
             "class": "nav__btn",
             "textContent": "Icons type: ",
             "parent": "settings-icons"
         },
-        "56": {
+        "29": {
             "name": "select",
             "class": "select-icon-type",
             "parent": "settings-icons"
         },
-        "57": {
+        "30": {
             "name": "option",
             "class": "select-icon-option",
             "attr": {
@@ -489,7 +305,7 @@
             "textContent": "Numbers",
             "parent": "select-icon-type"
         },
-        "58": {
+        "31": {
             "name": "option",
             "class": "select-icon-option",
             "attr": {
@@ -499,7 +315,7 @@
             "textContent": "Image",
             "parent": "select-icon-type"
         },
-        "59": {
+        "32": {
             "name": "option",
             "class": "select-icon-option",
             "attr": {
@@ -509,7 +325,247 @@
             "textContent": "Image + Numbers",
             "parent": "select-icon-type"
         },
+        "33": {
+            "name": "button",
+            "class": "nav__btn go_back",
+            "attr": {
+                "name" : "data-screen",
+                "value" : "main"
+            },
+            "textContent": "Go back",
+            "parent": "settings"
+        },
+        "34": {
+            "name": "div",
+            "class": "screen__container hidden",
+            "attr": {
+                "name" : "data-screen-name",
+                "value" : "saved_games"
+            },
+            "parent": "overlay visible"
+        },
+        "35": {
+            "name": "h2",
+            "class": "screen__title",
+            "textContent": "Saved games:",
+            "parent": "saved_games"
+        },
+        "36": {
+            "name": "div",
+            "class": "noSaves",
+            "textContent": "There is no any saved games yet!",
+            "parent": "saved_games"
+        },
+        "37": {
+            "name": "div",
+            "class": "slider",
+            "parent": "saved_games"
+        },
+        "38": {
+            "name": "button",
+            "class": "slider__arrow",
+            "textContent": "<",
+            "parent": "slider"
+        },
+        "39": {
+            "name": "div",
+            "class": "slider__game",
+            "parent": "slider"
+        },
+        "40": {
+            "name": "div",
+            "class": "slider__image",
+            "parent": "slider__game"
+        },
+        "41": {
+            "name": "div",
+            "class": "slider__description",
+            "parent": "slider__game"
+        },
+        "42": {
+            "name": "p",
+            "class": "slider__description-info",
+            "parent": "slider__description"
+        },
+        "43": {
+            "name": "p",
+            "class": "slider__description-info",
+            "parent": "slider__description"
+        },
+        "44": {
+            "name": "p",
+            "class": "slider__description-info",
+            "parent": "slider__description"
+        },
+        "45": {
+            "name": "button",
+            "class": "slider__description-load",
+            "textContent": "Load Game",
+            "parent": "slider__description"
+        },
+        "46": {
+            "name": "button",
+            "class": "slider__arrow",
+            "textContent": ">",
+            "parent": "slider"
+        },
+        "47": {
+            "name": "button",
+            "class": "nav__btn go_back",
+            "attr": {
+                "name" : "data-screen",
+                "value" : "main"
+            },
+            "textContent": "Go back",
+            "parent": "saved_games"
+        },
+        "48": {
+            "name": "div",
+            "class": "screen__container hidden",
+            "attr": {
+                "name" : "data-screen-name",
+                "value" : "best_scores"
+            },
+            "parent": "overlay visible"
+        },
+        "49": {
+            "name": "h2",
+            "class": "screen__title",
+            "textContent": "Best scores",
+            "parent": "best_scores"
+        },
+        "50": {
+            "name": "div",
+            "class": "results",
+            "parent": "best_scores"
+        },
+        "51": {
+            "name": "div",
+            "class": "date",
+            "parent": "results"
+        },
+        "52": {
+            "name": "div",
+            "class": "subtitle",
+            "textContent": "Date",
+            "parent": "date"
+        },
+        "53": {
+            "name": "div",
+            "class": "moves",
+            "parent": "results"
+        },
+        "54": {
+            "name": "div",
+            "class": "subtitle",
+            "textContent": "Moves",
+            "parent": "moves"
+        },
+        "55": {
+            "name": "div",
+            "class": "size",
+            "parent": "results"
+        },
+        "56": {
+            "name": "div",
+            "class": "subtitle",
+            "textContent": "Size",
+            "parent": "size"
+        },
+        "57": {
+            "name": "div",
+            "class": "time",
+            "parent": "results"
+        },
+        "58": {
+            "name": "div",
+            "class": "subtitle",
+            "textContent": "Time",
+            "parent": "time"
+        },
+        "59": {
+            "name": "button",
+            "class": "nav__btn go_back",
+            "attr": {
+                "name" : "data-screen",
+                "value" : "main"
+            },
+            "textContent": "Go back",
+            "parent": "best_scores"
+        },
         "60": {
+            "name": "div",
+            "class": "screen__container hidden",
+            "attr": {
+                "name" : "data-screen-name",
+                "value" : "rules"
+            },
+            "parent": "overlay visible"
+        },
+        "61": {
+            "name": "h2",
+            "class": "screen__title",
+            "textContent": "Rules of Gem Puzzle",
+            "parent": "rules"
+        },
+        "62": {
+            "name": "p",
+            "class": "description",
+            "textContent": "The object of the puzzle is to place the tiles in order by making sliding moves that use the empty space.",
+            "parent": "rules"
+        },
+        "63": {
+            "name": "p",
+            "class": "description",
+            "textContent": "You can save your game and load it later. Or you can just use pause button. Also you can choose game field size of color in Settings",
+            "parent": "rules"
+        },
+        "64": {
+            "name": "button",
+            "class": "nav__btn go_back",
+            "attr": {
+                "name" : "data-screen",
+                "value" : "main"
+            },
+            "textContent": "Go back",
+            "parent": "rules"
+        },
+        "65": {
+            "name": "div",
+            "class": "screen__container hidden",
+            "attr": {
+                "name" : "data-screen-name",
+                "value" : "win"
+            },
+            "parent": "overlay visible"
+        },
+        "66": {
+            "name": "h2",
+            "class": "screen__title",
+            "textContent": "Congratulations!",
+            "parent": "win"
+        },
+        "67": {
+            "name": "img",
+            "class": "screen__img image",
+            "parent": "win"
+        },
+        "68": {
+            "name": "button",
+            "class": "nav__btn go_back",
+            "attr": {
+                "name" : "data-screen",
+                "value" : "main"
+            },
+            "textContent": "Go back",
+            "parent": "win"
+        },
+        "69": {
+            "name": "button",
+            "class": "save-btn",
+            "parent": "screen__container active"
+        },
+        "70": {
             "name": "style",
             "class": "img-style",
             "textContent": ".image {background-image: url('src/assets/box/1.jpg');}",
