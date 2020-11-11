@@ -17,9 +17,14 @@ export default class Events {
     this.loadBtn = document.querySelector('.slider__description-load');
     this.arrowBtn = document.querySelectorAll('.slider__arrow');
     this.image = document.querySelector('.slider__image');
+    this.body = document.querySelector('body');
     this.dom = new Dom();
     this.save = new Save();
     this.game = new Game();
+  }
+
+  isChip(target) {
+    return Array.from(target.classList).includes('chip');
   }
 
   generateEvents() {
@@ -46,12 +51,32 @@ export default class Events {
         this.game.select(this.selectAudio), +this.game.select(this.selectIcons));
     });
 
-    this.gameBoard.addEventListener('click', (e) => {
-      if (Array.from(e.target.classList).includes('chip')) {
-        const emptyChip = document.querySelector('.empty');
-        this.game.changeChip(e.target, emptyChip);
+    this.gameBoard.addEventListener('mousedown', (e) => {
+      if (this.isChip(e.target)) {
+        this.drag = true;
+        this.dom.addDragBox(e, e.target, this.game.type);
       }
     });
+
+    this.gameBoard.addEventListener('mouseup', (e) => {
+      this.drag = false;
+      if (this.isChip(e.target) && e.target.className.includes('drag')) {
+        this.game.checkDragPosition(e);
+      }
+    });
+
+    this.gameBoard.addEventListener('mousemove', (e) => {
+      if (this.drag) {
+        this.dom.moveDragBox(e);
+      }
+    });
+
+    this.body.addEventListener('mouseleave', () => {
+      if (this.drag) {
+        this.drag = false;
+        this.dom.removeDragBox(this.game.type);
+      }
+    })
 
     this.saveBtn.addEventListener('click', () => {
       this.save.saveGame();

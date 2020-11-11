@@ -129,6 +129,23 @@ export default class Game {
       +this.select(this.selectIcons)];
   }
 
+  checkDragPosition(e) {
+    const emptyChip = document.querySelector('[data-id="0"]');
+    const positionTarget = e.target.getBoundingClientRect();
+    const targetX = positionTarget.x;
+    const targetY = positionTarget.y;
+    const positionEmpty = emptyChip.getBoundingClientRect();
+    const emptyX = positionEmpty.x;
+    const emptyY = positionEmpty.y;
+    if (targetX + 30 > emptyX && targetX - 30 < emptyX
+      && targetY + 30 > emptyY && targetY - 30 < emptyY) {
+      const target = this.dom.removeDragBox(this.type);
+      this.changeChip(target, emptyChip);
+    } else {
+      this.dom.removeDragBox(this.type);
+    }
+  }
+
   loadGame(count = 0) {
     const gameSettings = JSON.parse(window.localStorage.saves)[count];
 

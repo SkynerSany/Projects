@@ -168,7 +168,7 @@ export default class Dom {
     }
   }
 
-  switchClassChips(target, empty, type) {
+  switchClassChips(target, empty, type, drag) {
     const targetElem = target;
     const emptyChip = empty;
 
@@ -178,7 +178,9 @@ export default class Dom {
     emptyChip.textContent = targetElem.textContent;
     emptyChip.style.backgroundPosition = targetElem.style.backgroundPosition;
 
-    targetElem.dataset.id = this.default;
+    if (!drag) {
+      targetElem.dataset.id = this.default;
+    }
     targetElem.textContent = '';
     targetElem.className = 'empty';
     targetElem.style = emptyChipStyle;
@@ -217,6 +219,31 @@ export default class Dom {
     this.text[0].textContent = `Board size: ${this.saves[count].size}x${this.saves[count].size}`;
     this.text[1].textContent = `Time: ${this.addZero(this.saves[count].minutes)} : ${this.addZero(this.saves[count].seconds)}`;
     this.text[2].textContent = `Moves: ${this.saves[count].moves}`;
+  }
+
+  addDragBox(mouse, target, type) {
+    this.dragBox = document.createElement('div');
+    this.switchClassChips(target, this.dragBox, type, true);
+    this.dragBox.className += ' drag';
+    this.dragBox.style.width = `${target.offsetWidth}px`;
+    this.dragBox.style.height = `${target.offsetHeight}px`;
+    this.dragBox.style.top = `${mouse.clientY - this.gameBoard.offsetTop - (target.offsetWidth / 2)}px`;
+    this.dragBox.style.left = `${mouse.clientX - this.gameBoard.offsetLeft - (target.offsetHeight / 2)}px`;
+    target.after(this.dragBox);
+  }
+
+  moveDragBox(mouse) {
+    this.dragBox = document.querySelector('.drag');
+    this.dragBox.style.top = `${mouse.clientY - this.gameBoard.offsetTop - (this.dragBox.offsetWidth / 2)}px`;
+    this.dragBox.style.left = `${mouse.clientX - this.gameBoard.offsetLeft - (this.dragBox.offsetHeight / 2)}px`;
+  }
+
+  removeDragBox(type) {
+    this.dragBox = document.querySelector('.drag');
+    const target = document.querySelector(`[data-id="${this.dragBox.dataset.id}"]`);
+    this.switchClassChips(this.dragBox, target, type, true);
+    this.dragBox.remove();
+    return target;
   }
 }
 
