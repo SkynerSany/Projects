@@ -76,6 +76,10 @@ button.visible {
     }
 }
 
+.drag {
+    position: absolute;
+}
+
 .image {
     background-size: 420px;
     &:hover {
