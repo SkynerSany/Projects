@@ -26,9 +26,22 @@ export default class Game {
       positionOfEmptyChip + 1, positionOfEmptyChip + this.boardSize];
   }
 
+  checkLastElem(emptyChip, emptyNeighboard, positionOftargtElem) {
+    const positionOfEmptyChip = this.checkPosition(emptyChip);
+    this.bool = true;
+    if (!(positionOfEmptyChip % this.boardSize)) {
+      this.bool = emptyNeighboard[1] !== positionOftargtElem;
+    } else if (!((positionOfEmptyChip + 1) % this.boardSize)) {
+      this.bool = emptyNeighboard[2] !== positionOftargtElem;
+    }
+    return this.bool;
+  }
+
   isNeifhbor(targetElem, emptyChip) {
     const positionOftargtElem = this.checkPosition(targetElem);
-    return this.checkNeighbor(emptyChip).indexOf(positionOftargtElem) !== -1;
+    const emptyNeighboard = this.checkNeighbor(emptyChip);
+    return emptyNeighboard.indexOf(positionOftargtElem) !== -1
+      && this.checkLastElem(emptyChip, emptyNeighboard, positionOftargtElem);
   }
 
   isFinish() {
@@ -115,6 +128,7 @@ export default class Game {
     this.generateArrImgPos();
     this.dom.switchBgStyle(this.type, imgSrc);
     this.dom.generateChips(this.boardSize, this.type, sortArr, this.arrImagPositions);
+    this.chipArea = this.gameBoard.children[0].offsetWidth / 6;
 
     this.updateTimer();
     this.updateMoves();
@@ -129,16 +143,25 @@ export default class Game {
       +this.select(this.selectIcons)];
   }
 
+  getChipPosition(chip) {
+    const positionTarget = chip.getBoundingClientRect();
+    return [positionTarget.x, positionTarget.y];
+  }
+
+  elementIsIdentical(a, b) {
+    return a + this.chipArea > b && a - this.chipArea < b;
+  }
+
   checkDragPosition(e) {
     const emptyChip = document.querySelector('[data-id="0"]');
-    const positionTarget = e.target.getBoundingClientRect();
-    const targetX = positionTarget.x;
-    const targetY = positionTarget.y;
-    const positionEmpty = emptyChip.getBoundingClientRect();
-    const emptyX = positionEmpty.x;
-    const emptyY = positionEmpty.y;
-    if (targetX + 30 > emptyX && targetX - 30 < emptyX
-      && targetY + 30 > emptyY && targetY - 30 < emptyY) {
+    const chip = document.querySelector(`[data-id="${e.target.dataset.id}"]`);
+    const positionTarget = this.getChipPosition(e.target);
+    const positionEmpty = this.getChipPosition(emptyChip);
+    const positionChip = this.getChipPosition(chip);
+    if ((this.elementIsIdentical(positionTarget[0], positionEmpty[0])
+      && this.elementIsIdentical(positionTarget[1], positionEmpty[1]))
+      || (this.elementIsIdentical(positionTarget[0], positionChip[0])
+      && this.elementIsIdentical(positionTarget[1], positionChip[1]))) {
       const target = this.dom.removeDragBox(this.type);
       this.changeChip(target, emptyChip);
     } else {
