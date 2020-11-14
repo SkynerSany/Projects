@@ -80,6 +80,20 @@ export default class Events {
       }
     });
 
+    this.gameBoard.addEventListener('touchstart', (e) => {
+      this.drag = false;
+      if (this.isChip(e.target) && e.target.className.includes('drag')) {
+        this.game.checkDragPosition(e);
+      }
+    });
+
+    this.gameBoard.addEventListener('touchmove', (e) => {
+      if (this.drag) {
+        console.log(e);
+        this.dom.moveDragBox(e);
+      }
+    });
+
     this.gameBoard.addEventListener('touchend', (e) => {
       this.drag = false;
       if (this.isChip(e.target) && e.target.className.includes('drag')) {
