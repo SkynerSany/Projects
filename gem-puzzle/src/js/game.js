@@ -59,6 +59,7 @@ export default class Game {
     const date = new Date();
     const strDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
     this.dom.openWinLayer(this.type);
+    this.dom.generateFinishMessage(this.moves, this.minutes, this.seconds, this.boardSize);
     new Audio('src/assets/audio/congratulations.mp3').play();
     this.dom.updateBestScore(strDate, this.moves, `${this.boardSize}x${this.boardSize}`, this.time);
   }
@@ -135,7 +136,8 @@ export default class Game {
   }
 
   select(selectBox) {
-    return selectBox.options[selectBox.options.selectedIndex].value;
+    this.box = selectBox;
+    return this.box.options[this.box.options.selectedIndex].value;
   }
 
   selectArr() {
@@ -144,8 +146,8 @@ export default class Game {
   }
 
   getChipPosition(chip) {
-    const positionTarget = chip.getBoundingClientRect();
-    return [positionTarget.x, positionTarget.y];
+    this.positionTarget = chip.getBoundingClientRect();
+    return [this.positionTarget.x, this.positionTarget.y];
   }
 
   elementIsIdentical(a, b) {

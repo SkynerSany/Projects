@@ -214,6 +214,15 @@ button.visible {
     width: 120px;
 }
 
+.win__message {
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    font-size: 17px;
+    text-align: center;
+    text-shadow: 2px 2px 3px #000000;
+}
+
 @keyframes clickOnChip {
     0% {
         transform: scale(1, 1);

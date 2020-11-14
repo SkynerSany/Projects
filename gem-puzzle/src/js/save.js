@@ -86,7 +86,7 @@ export default class Save {
   saveScore() {
     const scoresObj = {};
     const resultsChild = Array.from(document.querySelector('.results').children);
-    resultsChild.forEach((item, i) => {
+    resultsChild.forEach((item) => {
       Array.from(item.children).forEach((elem, j, arr) => {
         if (j !== 0) {
           if (!scoresObj[`${j - 1}`]) {

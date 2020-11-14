@@ -24,7 +24,8 @@ export default class Events {
   }
 
   isChip(target) {
-    return Array.from(target.classList).includes('chip');
+    this.target = target;
+    return Array.from(this.target.classList).includes('chip');
   }
 
   generateEvents() {
@@ -67,6 +68,7 @@ export default class Events {
 
     this.gameBoard.addEventListener('mousemove', (e) => {
       if (this.drag) {
+        console.log(e);
         this.dom.moveDragBox(e);
       }
     });
@@ -76,7 +78,14 @@ export default class Events {
         this.drag = false;
         this.dom.removeDragBox(this.game.type);
       }
-    })
+    });
+
+    this.gameBoard.addEventListener('touchend', (e) => {
+      this.drag = false;
+      if (this.isChip(e.target) && e.target.className.includes('drag')) {
+        this.game.changeChip(e.target, document.querySelector('[data-id="0"]'));
+      }
+    });
 
     this.saveBtn.addEventListener('click', () => {
       this.save.saveGame();
