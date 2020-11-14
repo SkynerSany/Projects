@@ -97,15 +97,15 @@ export default class Dom {
   }
 
   openWinLayer(type) {
-    const winBox = document.querySelector('[data-screen-name="win"]');
+    this.winBox = document.querySelector('[data-screen-name="win"]');
     const prevMenu = document.querySelector('.active');
     this.changeVisibleSettings(true);
 
     prevMenu.classList.remove('active');
     prevMenu.classList.add('hidden');
 
-    winBox.classList.remove('hidden');
-    winBox.classList.add('active');
+    this.winBox.classList.remove('hidden');
+    this.winBox.classList.add('active');
 
     if (type) {
       const congratImg = document.querySelector('.screen__img');
@@ -195,6 +195,13 @@ export default class Dom {
 
     this.switchSaves();
     this.image.setAttribute('data-save', 0);
+  }
+
+  generateFinishMessage(moves, minutes, seconds, size) {
+    const p = document.createElement('p');
+    p.className = 'win__message';
+    p.textContent = `Outstanding! You won the game in ${moves} moves! You've spent ${this.addZero(minutes)} min ${this.addZero(seconds)} sec and you solved ${size}x${size} puzzle!`;
+    this.winBox.append(p);
   }
 
   switchSaves(count = 0) {
