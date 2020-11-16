@@ -4,3 +4,4 @@ import './dom';
 import './save';
 import './game';
 import './events';
+import './autoSolve';

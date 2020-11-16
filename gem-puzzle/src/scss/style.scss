@@ -29,12 +29,16 @@ button.visible {
 
 .header {
     min-height: 75px;
-    max-width: 420px;
+    max-width: 450px;
     margin: auto;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     padding-bottom: 10px;
+}
+
+.auto {
+    width: 90px;
 }
 
 .screen__title {

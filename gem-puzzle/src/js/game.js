@@ -37,6 +37,18 @@ export default class Game {
     return this.bool;
   }
 
+  isSolvable() {
+    let mess = 0;
+    for (let i = 0; i < this.sortArr.length - 2; i += 1) {
+      for (let j = i + 1; j < this.sortArr.length - 1; j += 1) {
+        if (this.sortArr[i] < this.sortArr[j]) {
+          mess += 1;
+        }
+      }
+    }
+    return mess % 2 === 0;
+  }
+
   isNeifhbor(targetElem, emptyChip) {
     const positionOftargtElem = this.checkPosition(targetElem);
     const emptyNeighboard = this.checkNeighbor(emptyChip);
@@ -124,11 +136,20 @@ export default class Game {
     }
   }
 
-  generateBoard(sortArr = this.generateRandomNumbres(), imgSrc = this.imgSrc) {
+  generateBoard(sortArr, imgSrc = this.imgSrc) {
+    if (sortArr) {
+      this.sortArr = sortArr;
+    } else {
+      this.sortArr = this.generateRandomNumbres();
+      while (!this.isSolvable()) {
+        console.log('fail');
+        this.sortArr = this.generateRandomNumbres();
+      }
+    }
     this.dom.generateTable(this.boardSize);
     this.generateArrImgPos();
     this.dom.switchBgStyle(this.type, imgSrc);
-    this.dom.generateChips(this.boardSize, this.type, sortArr, this.arrImagPositions);
+    this.dom.generateChips(this.boardSize, this.type, this.sortArr, this.arrImagPositions);
     this.chipArea = this.gameBoard.children[0].offsetWidth / 6;
 
     this.updateTimer();
