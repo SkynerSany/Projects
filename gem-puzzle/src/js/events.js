@@ -1,5 +1,6 @@
 /* global document, window */
 
+import AutoSolve from './autoSolve';
 import Dom from './dom';
 import Game from './game';
 import Save from './save';
@@ -18,9 +19,11 @@ export default class Events {
     this.arrowBtn = document.querySelectorAll('.slider__arrow');
     this.image = document.querySelector('.slider__image');
     this.body = document.querySelector('body');
+    this.autoBtn = document.querySelector('.auto');
     this.dom = new Dom();
     this.save = new Save();
     this.game = new Game();
+    this.autoSolve = new AutoSolve();
   }
 
   isChip(target) {
@@ -68,7 +71,6 @@ export default class Events {
 
     this.gameBoard.addEventListener('mousemove', (e) => {
       if (this.drag) {
-        console.log(e);
         this.dom.moveDragBox(e);
       }
     });
@@ -77,27 +79,6 @@ export default class Events {
       if (this.drag) {
         this.drag = false;
         this.dom.removeDragBox(this.game.type);
-      }
-    });
-
-    this.gameBoard.addEventListener('touchstart', (e) => {
-      this.drag = false;
-      if (this.isChip(e.target) && e.target.className.includes('drag')) {
-        this.game.checkDragPosition(e);
-      }
-    });
-
-    this.gameBoard.addEventListener('touchmove', (e) => {
-      if (this.drag) {
-        console.log(e);
-        this.dom.moveDragBox(e);
-      }
-    });
-
-    this.gameBoard.addEventListener('touchend', (e) => {
-      this.drag = false;
-      if (this.isChip(e.target) && e.target.className.includes('drag')) {
-        this.game.changeChip(e.target, document.querySelector('[data-id="0"]'));
       }
     });
 
@@ -115,6 +96,11 @@ export default class Events {
 
     this.arrowBtn[1].addEventListener('click', () => {
       this.dom.switchSaves(+this.image.dataset.save + 1);
+    });
+
+    this.autoBtn.addEventListener('click', () => {
+      this.autoSolve = new AutoSolve();
+      this.autoSolve.startAuto(this.game);
     });
 
     window.onload = () => {
@@ -136,4 +122,5 @@ export default class Events {
   const save = new Save();
   events.generateEvents();
   save.loadSetitngs();
+  alert('Если возможно, проверьте задание ближе к концу срока, спасибо \\о/');
 })();

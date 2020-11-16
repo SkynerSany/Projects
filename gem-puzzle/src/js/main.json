@@ -6,46 +6,52 @@
             "parent": "body"
         },
         "1": {
+            "name": "button",
+            "class": "auto",
+            "textContent": "Auto solve",
+            "parent": "header"
+        },
+        "2": {
             "name": "div",
             "class": "info",
             "parent": "header"
         },
-        "2": {
+        "3": {
             "name": "span",
             "class": "description",
             "textContent": "Time ",
             "parent": "info"
         },
-        "3": {
+        "4": {
             "name": "span",
             "class": "timer",
             "textContent": "00 : 00",
             "parent": "info"
         },
-        "4": {
+        "5": {
             "name": "div",
             "class": "moves",
             "parent": "header"
         },
-        "5": {
+        "6": {
             "name": "span",
             "class": "description",
             "textContent": "Moves ",
             "parent": "moves"
         },
-        "6": {
+        "7": {
             "name": "span",
             "class": "counter",
             "textContent": "0",
             "parent": "moves"
         },
-        "7": {
+        "8": {
             "name": "button",
             "class": "pause visible",
             "textContent": "Pause game",
             "parent": "header"
         },
-        "8": {
+        "9": {
             "name": "button",
             "class": "pause",
             "textContent": "Resume game",
