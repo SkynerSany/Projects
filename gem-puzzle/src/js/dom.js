@@ -1,5 +1,4 @@
 /* global document, window */
-
 import * as main from './main.json';
 
 export default class Dom {
@@ -151,11 +150,12 @@ export default class Dom {
           div.textContent = sortArr[i];
         }
       }
-
+      div.setAttribute('draggable', true);
       div.setAttribute('data-id', sortArr[i]);
       this.gameBoard.prepend(div);
     }
     const empty = document.querySelector('[data-id="0"]');
+    empty.removeAttribute('draggable');
     empty.className = 'empty';
     empty.textContent = '';
   }
@@ -168,7 +168,7 @@ export default class Dom {
     }
   }
 
-  switchClassChips(target, empty, type, drag) {
+  changeChips(target, empty, type, eventType) {
     const targetElem = target;
     const emptyChip = empty;
 
@@ -177,13 +177,16 @@ export default class Dom {
     emptyChip.dataset.id = targetElem.dataset.id;
     emptyChip.textContent = targetElem.textContent;
     emptyChip.style.backgroundPosition = targetElem.style.backgroundPosition;
-
-    if (!drag) {
-      targetElem.dataset.id = this.default;
+    emptyChip.setAttribute('draggable', true);
+    if (!eventType) {
+      emptyChip.style.opacity = '0';
     }
+
+    targetElem.dataset.id = this.default;
     targetElem.textContent = '';
     targetElem.className = 'empty';
     targetElem.style = emptyChipStyle;
+    targetElem.removeAttribute('draggable');
   }
 
   generateslider() {
@@ -228,29 +231,36 @@ export default class Dom {
     this.text[2].textContent = `Moves: ${this.saves[count].moves}`;
   }
 
-  addDragBox(mouse, target, type) {
-    this.dragBox = document.createElement('div');
-    this.switchClassChips(target, this.dragBox, type, true);
-    this.dragBox.className += ' drag';
-    this.dragBox.style.width = `${target.offsetWidth}px`;
-    this.dragBox.style.height = `${target.offsetHeight}px`;
-    this.dragBox.style.top = `${mouse.clientY - this.gameBoard.offsetTop - (target.offsetWidth / 2)}px`;
-    this.dragBox.style.left = `${mouse.clientX - this.gameBoard.offsetLeft - (target.offsetHeight / 2)}px`;
-    target.after(this.dragBox);
+  createMovableChip(target, empty) {
+    const gameBoardPosition = this.gameBoard.getBoundingClientRect();
+    const targetPosition = target.getBoundingClientRect();
+    const div = document.createElement('div');
+    div.className = `${target.className} anim`;
+    div.dataset.id = target.dataset.id;
+    div.textContent = target.textContent;
+    div.style.backgroundPosition = target.style.backgroundPosition;
+    div.style.height = `${target.clientHeight}px`;
+    div.style.width = `${target.clientWidth}px`;
+    div.style.top = `${targetPosition.y - gameBoardPosition.y - 3}px`;
+    div.style.left = `${targetPosition.x - gameBoardPosition.x - 3}px`;
+    this.gameBoard.append(div);
+    this.moveChip(div, empty, gameBoardPosition);
   }
 
-  moveDragBox(mouse) {
-    this.dragBox = document.querySelector('.drag');
-    this.dragBox.style.top = `${mouse.clientY - this.gameBoard.offsetTop - (this.dragBox.offsetWidth / 2)}px`;
-    this.dragBox.style.left = `${mouse.clientX - this.gameBoard.offsetLeft - (this.dragBox.offsetHeight / 2)}px`;
+  moveChip(target, empty, gameBoardPosition) {
+    const emptyPossition = empty.getBoundingClientRect();
+    target.style.top = `${emptyPossition.y - gameBoardPosition.y - 3}px`;
+    target.style.left = `${emptyPossition.x - gameBoardPosition.x - 3}px`;
+    setTimeout(() => {
+      this.removeMovableChip(target);
+    }, 500);
   }
 
-  removeDragBox(type) {
-    this.dragBox = document.querySelector('.drag');
-    const target = document.querySelector(`[data-id="${this.dragBox.dataset.id}"]`);
-    this.switchClassChips(this.dragBox, target, type, true);
-    this.dragBox.remove();
-    return target;
+  removeMovableChip(target){
+    const prevChip = document.querySelector(`[data-id="${target.dataset.id}"]`);
+    prevChip.style.opacity = 1;
+    target.remove();
+    prevChip.style.opacity = '';
   }
 }
 

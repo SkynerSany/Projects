@@ -76,9 +76,12 @@ export default class Game {
     this.dom.updateBestScore(strDate, this.moves, `${this.boardSize}x${this.boardSize}`, this.time);
   }
 
-  changeChip(target, empty) {
+  changeChip(target, empty, eventType) {
     if (this.isNeifhbor(target, empty)) {
-      this.dom.switchClassChips(target, empty, this.type);
+      if (!eventType) {
+        this.dom.createMovableChip(target, empty);
+      }
+      this.dom.changeChips(target, empty, this.type, eventType);
 
       if (this.audioNumber) {
         this.audio.currentTime = this.default;
@@ -142,7 +145,6 @@ export default class Game {
     } else {
       this.sortArr = this.generateRandomNumbres();
       while (!this.isSolvable()) {
-        console.log('fail');
         this.sortArr = this.generateRandomNumbres();
       }
     }
@@ -169,27 +171,6 @@ export default class Game {
   getChipPosition(chip) {
     this.positionTarget = chip.getBoundingClientRect();
     return [this.positionTarget.x, this.positionTarget.y];
-  }
-
-  elementIsIdentical(a, b) {
-    return a + this.chipArea > b && a - this.chipArea < b;
-  }
-
-  checkDragPosition(e) {
-    const emptyChip = document.querySelector('[data-id="0"]');
-    const chip = document.querySelector(`[data-id="${e.target.dataset.id}"]`);
-    const positionTarget = this.getChipPosition(e.target);
-    const positionEmpty = this.getChipPosition(emptyChip);
-    const positionChip = this.getChipPosition(chip);
-    if ((this.elementIsIdentical(positionTarget[0], positionEmpty[0])
-      && this.elementIsIdentical(positionTarget[1], positionEmpty[1]))
-      || (this.elementIsIdentical(positionTarget[0], positionChip[0])
-      && this.elementIsIdentical(positionTarget[1], positionChip[1]))) {
-      const target = this.dom.removeDragBox(this.type);
-      this.changeChip(target, emptyChip);
-    } else {
-      this.dom.removeDragBox(this.type);
-    }
   }
 
   loadGame(count = 0) {
