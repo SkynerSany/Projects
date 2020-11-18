@@ -117,5 +117,5 @@ export default class Events {
   const save = new Save();
   events.generateEvents();
   save.loadSetitngs();
-  //alert('Если возможно, проверьте задание ближе к концу срока, спасибо \\о/');
+  alert('Если возможно, проверьте задание ближе к концу срока, спасибо \\о/');
 })();
