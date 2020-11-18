@@ -23,7 +23,6 @@ export default class Events {
     this.dom = new Dom();
     this.save = new Save();
     this.game = new Game();
-    this.autoSolve = new AutoSolve();
   }
 
   isChip(target) {
@@ -55,31 +54,27 @@ export default class Events {
         this.game.select(this.selectAudio), +this.game.select(this.selectIcons));
     });
 
-    this.gameBoard.addEventListener('mousedown', (e) => {
+    this.gameBoard.addEventListener('click', (e) => {
       if (this.isChip(e.target)) {
-        this.drag = true;
-        this.dom.addDragBox(e, e.target, this.game.type);
+        const empty = document.querySelector('.empty');
+        this.game.changeChip(e.target, empty);
       }
     });
 
-    this.gameBoard.addEventListener('mouseup', (e) => {
-      this.drag = false;
-      if (this.isChip(e.target) && e.target.className.includes('drag')) {
-        this.game.checkDragPosition(e);
+    this.gameBoard.addEventListener('dragstart', (e) => {
+      if (this.isChip(e.target)) {
+        this.dragTarget = e.target;
       }
     });
 
-    this.gameBoard.addEventListener('mousemove', (e) => {
-      if (this.drag) {
-        this.dom.moveDragBox(e);
+    this.gameBoard.addEventListener('drop', (e) => {
+      if (e.target.className === 'empty') {
+        this.game.changeChip(this.dragTarget, e.target, e.type);
       }
     });
 
-    this.body.addEventListener('mouseleave', () => {
-      if (this.drag) {
-        this.drag = false;
-        this.dom.removeDragBox(this.game.type);
-      }
+    this.gameBoard.addEventListener('dragover', (e) => {
+      e.preventDefault();
     });
 
     this.saveBtn.addEventListener('click', () => {
@@ -122,5 +117,5 @@ export default class Events {
   const save = new Save();
   events.generateEvents();
   save.loadSetitngs();
-  alert('Если возможно, проверьте задание ближе к концу срока, спасибо \\о/');
+  //alert('Если возможно, проверьте задание ближе к концу срока, спасибо \\о/');
 })();

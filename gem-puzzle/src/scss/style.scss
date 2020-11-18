@@ -15,7 +15,7 @@ button {
     outline: none;
     cursor: pointer;
     &:hover {
-        background-color: rgba(231, 76, 60, 1);
+        background-color: #e74c3c;
         color: #ffffff;
     }
     &:disabled {
@@ -66,22 +66,29 @@ button.visible {
 }
 
 .chip {
-    border: 1px solid #444;
+    border: 1px solid #444444;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 2rem;
-    background: rgb(228, 228, 228);
+    background: #e4e4e4;
     user-select: none;
     border-radius: 5px;
+    //animation: winOpacity .7s;
+    //transition: clickOnChip .7s linear,left .7s linear;
     &:hover {
         cursor: pointer;
         background-color: #7de85b;
     }
 }
 
-.drag {
+.empty {
+    //animation: endOpacity .7s;
+}
+
+.anim {
     position: absolute;
+    transition: all 0.5s;
 }
 
 .image {
@@ -116,7 +123,7 @@ button.visible {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    color: lawngreen;
+    color: #7cfc00;
 }
 
 .hidden {
@@ -272,5 +279,35 @@ button.visible {
     }
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes endOpacity {
+    0% {
+        opacity: 1;
+    }
+    15% {
+        opacity: 0.9;
+    }
+    25% {
+        opacity: 0.75;
+    }
+    40% {
+        opacity: 0.65;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    65% {
+        opacity: 0.4;
+    }
+    75% {
+        opacity: 0.25;
+    }
+    90% {
+        opacity: 0.15;
+    }
+    100% {
+        opacity: 0;
     }
 }
