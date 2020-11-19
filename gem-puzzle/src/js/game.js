@@ -39,13 +39,14 @@ export default class Game {
 
   isSolvable() {
     let mess = 0;
-    for (let i = 0; i < this.sortArr.length - 2; i += 1) {
-      for (let j = i + 1; j < this.sortArr.length - 1; j += 1) {
-        if (this.sortArr[i] < this.sortArr[j]) {
+    for (let i = 0; i < this.sortArr.length - 1; i += 1) {
+      for (let j = i + 1; j < this.sortArr.length; j += 1) {
+        if (this.sortArr[i] > this.sortArr[j] && this.sortArr[i] !== 0 && this.sortArr[j] !== 0) {
           mess += 1;
         }
       }
     }
+
     return mess % 2 === 0;
   }
 
@@ -58,7 +59,7 @@ export default class Game {
 
   isFinish() {
     const arrChips = Array.from(this.gameBoard.children);
-    for (let i = this.default; i < arrChips.length - 3; i += 1) {
+    for (let i = this.default; i < arrChips.length - 4; i += 1) {
       arrChips[i] = (+arrChips[i].dataset.id === i + 1);
     }
     if (arrChips.indexOf(false) === -1) {
@@ -145,6 +146,7 @@ export default class Game {
     } else {
       this.sortArr = this.generateRandomNumbres();
       while (!this.isSolvable()) {
+        console.log('false');
         this.sortArr = this.generateRandomNumbres();
       }
     }
