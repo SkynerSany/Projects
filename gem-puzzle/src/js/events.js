@@ -94,8 +94,8 @@ export default class Events {
     });
 
     this.autoBtn.addEventListener('click', () => {
-      this.autoSolve = new AutoSolve();
-      this.autoSolve.startAuto(this.game);
+      this.autoSolve = new AutoSolve(this.game);
+      this.autoSolve.startAuto();
     });
 
     window.onload = () => {
@@ -117,5 +117,4 @@ export default class Events {
   const save = new Save();
   events.generateEvents();
   save.loadSetitngs();
-  alert('Если возможно, проверьте задание ближе к концу срока, спасибо \\о/');
 })();
