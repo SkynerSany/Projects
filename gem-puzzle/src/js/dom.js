@@ -78,10 +78,8 @@ export default class Dom {
   changeVisibleSettings(isClose) {
     if (isClose) {
       this.overlay.classList.add('visible');
-      this.gameBoard.style.border = 'none';
     } else {
       this.overlay.classList.remove('visible');
-      this.gameBoard.style.border = '3px solid';
     }
   }
 
@@ -241,16 +239,16 @@ export default class Dom {
     div.style.backgroundPosition = target.style.backgroundPosition;
     div.style.height = `${target.clientHeight}px`;
     div.style.width = `${target.clientWidth}px`;
-    div.style.top = `${targetPosition.y - gameBoardPosition.y - 3}px`;
-    div.style.left = `${targetPosition.x - gameBoardPosition.x - 3}px`;
+    div.style.top = `${targetPosition.y - gameBoardPosition.y}px`;
+    div.style.left = `${targetPosition.x - gameBoardPosition.x}px`;
     this.gameBoard.append(div);
     this.moveChip(div, empty, gameBoardPosition);
   }
 
   moveChip(target, empty, gameBoardPosition) {
     const emptyPossition = empty.getBoundingClientRect();
-    target.style.top = `${emptyPossition.y - gameBoardPosition.y - 3}px`;
-    target.style.left = `${emptyPossition.x - gameBoardPosition.x - 3}px`;
+    target.style.top = `${emptyPossition.y - gameBoardPosition.y}px`;
+    target.style.left = `${emptyPossition.x - gameBoardPosition.x}px`;
     setTimeout(() => {
       this.removeMovableChip(target);
     }, 500);
