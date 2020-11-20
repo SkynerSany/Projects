@@ -27,6 +27,13 @@ button.visible {
     display: block;
 }
 
+body {
+    background-image: url('../assets/images/body-bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
 .header {
     min-height: 75px;
     max-width: 450px;
@@ -62,7 +69,9 @@ button.visible {
     display: grid;
     grid-auto-rows: 1fr;
     grid-gap: 2px;
-    border-radius: 10px;
+    background-image: url('../assets/images/ramka.jpg');
+    background-size: 594px;
+    background-position: -58px center;
 }
 
 .chip {
@@ -73,17 +82,10 @@ button.visible {
     font-size: 2rem;
     background: #e4e4e4;
     user-select: none;
-    border-radius: 5px;
-    //animation: winOpacity .7s;
-    //transition: clickOnChip .7s linear,left .7s linear;
     &:hover {
         cursor: pointer;
         background-color: #7de85b;
     }
-}
-
-.empty {
-    //animation: endOpacity .7s;
 }
 
 .anim {
@@ -104,13 +106,12 @@ button.visible {
     position: absolute;
     z-index: 99;
     background: rgba(0, 0, 0, 0.8);
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
+    right: 23px;
+    bottom: 23px;
+    width: 91%;
+    height: 91%;
     transition: all .1s ease-in;
     -webkit-transition: all 0.1s ease-in;
-    border-radius: 10px;
     &.visible {
         display: flex;
     }
