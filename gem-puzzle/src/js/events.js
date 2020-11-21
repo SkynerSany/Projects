@@ -1,4 +1,4 @@
-/* global document, window */
+/* global document, window, alert */
 
 import AutoSolve from './autoSolve';
 import Dom from './dom';
@@ -117,4 +117,5 @@ export default class Events {
   const save = new Save();
   events.generateEvents();
   save.loadSetitngs();
+  alert('Автосбор работает нормально только в 3x3, для 4x4 и больше надо собрать 45% от пазла');
 })();

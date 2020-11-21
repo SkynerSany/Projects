@@ -70,8 +70,13 @@ body {
     grid-auto-rows: 1fr;
     grid-gap: 2px;
     background-image: url('../assets/images/ramka.jpg');
-    background-size: 594px;
-    background-position: -58px center;
+    background-size: 500px;
+    background-position: -14px -14px;
+    @media (max-width: 476px) {
+        height: 100vw;
+        background-size: 105vw;
+        background-position: center;
+    }
 }
 
 .chip {
@@ -82,9 +87,14 @@ body {
     font-size: 2rem;
     background: #e4e4e4;
     user-select: none;
+    background-image: url('../assets/images/chip.jpg');
+    background-size: cover;
+    color: #ffffff; 
+    text-shadow: 2px 2px 5px #000;
     &:hover {
         cursor: pointer;
-        background-color: #7de85b;
+        background-blend-mode: hard-light;
+        background-color: #ffffff;
     }
 }
 
@@ -95,8 +105,8 @@ body {
 
 .image {
     background-size: 420px;
-    &:hover {
-        opacity: 0.5;
+    @media (max-width: 476px) {
+        background-size: 89vw;
     }
 }
 
@@ -106,10 +116,10 @@ body {
     position: absolute;
     z-index: 99;
     background: rgba(0, 0, 0, 0.8);
-    right: 23px;
-    bottom: 23px;
-    width: 91%;
-    height: 91%;
+    right: 4.6%;
+    bottom: 4.8%;
+    width: 90.5%;
+    height: 90.5%;
     transition: all .1s ease-in;
     -webkit-transition: all 0.1s ease-in;
     &.visible {
@@ -160,7 +170,7 @@ body {
     top: -26px;
     left: -33px;
     background: url('../assets/icons/save_icon.svg');
-    background-size: 30px;
+    background-size: 25px;
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -171,7 +181,7 @@ body {
     h2 {
         font-size: 35px;
         position: absolute;
-        top: 35%;
+        top: 25%;
         text-shadow: 2px 2px 5px #000000;
         color: #ffd700;
     }
@@ -229,28 +239,10 @@ body {
 .win__message {
     width: 90%;
     position: absolute;
-    top: 50%;
+    top: 40%;
     font-size: 17px;
     text-align: center;
     text-shadow: 2px 2px 3px #000000;
-}
-
-@keyframes clickOnChip {
-    0% {
-        transform: scale(1, 1);
-    }
-    25% {
-        transform: scale(0.75, 0.75);
-    }
-    50% {
-        transform: scale(0.5, 0.5);
-    }
-    75% {
-        transform: scale(0.25, 0.25);
-    }
-    100% {
-        transform: scale(0, 0);
-    }
 }
 
 @keyframes winOpacity {
@@ -280,35 +272,5 @@ body {
     }
     100% {
         opacity: 1;
-    }
-}
-
-@keyframes endOpacity {
-    0% {
-        opacity: 1;
-    }
-    15% {
-        opacity: 0.9;
-    }
-    25% {
-        opacity: 0.75;
-    }
-    40% {
-        opacity: 0.65;
-    }
-    50% {
-        opacity: 0.5;
-    }
-    65% {
-        opacity: 0.4;
-    }
-    75% {
-        opacity: 0.25;
-    }
-    90% {
-        opacity: 0.15;
-    }
-    100% {
-        opacity: 0;
     }
 }

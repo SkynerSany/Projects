@@ -124,8 +124,6 @@ export default class autoSolve {
           clearInterval(inteval);
         }
       }, 700);
-    } else {
-      console.log('IDA* failed');
     }
   }
 
