@@ -146,7 +146,6 @@ export default class Game {
     } else {
       this.sortArr = this.generateRandomNumbres();
       while (!this.isSolvable()) {
-        console.log('false');
         this.sortArr = this.generateRandomNumbres();
       }
     }

@@ -124,9 +124,6 @@ export default class Dom {
   switchBgStyle(type, imgSrc) {
     this.style = document.querySelector('.img-style');
     this.style.textContent = `.image {background-image: ${imgSrc};}`;
-    if (type === 2) {
-      this.style.textContent = `.image {background-image: ${imgSrc}; color: #ffffff; text-shadow: 2px 2px 5px #000;}`;
-    }
   }
 
   generateTable(boardSize) {
@@ -199,10 +196,16 @@ export default class Dom {
   }
 
   generateFinishMessage(moves, minutes, seconds, size) {
-    const p = document.createElement('p');
-    p.className = 'win__message';
-    p.textContent = `Outstanding! You won the game in ${moves} moves! You've spent ${this.addZero(minutes)} min ${this.addZero(seconds)} sec and you solved ${size}x${size} puzzle!`;
-    this.winBox.append(p);
+    const message = document.querySelector('.win__message');
+    const messageText = `Outstanding! You won the game in ${moves} moves! You've spent ${this.addZero(minutes)} min ${this.addZero(seconds)} sec and you solved ${size}x${size} puzzle!`;
+    if (message) {
+      message.textContent = messageText;
+    } else {
+      const p = document.createElement('p');
+      p.className = 'win__message';
+      p.textContent = messageText;
+      this.winBox.append(p);
+    }
   }
 
   switchSaves(count = 0) {
@@ -222,7 +225,7 @@ export default class Dom {
       this.arrowBtn[1].disabled = false;
     }
     this.image.dataset.save = count;
-    this.image.style.background = `url(${this.saves[count].gameImg}) -2px 0 / cover`;
+    this.image.style.background = `url(${this.saves[count].gameImg}) 0 0 / cover`;
 
     this.text[0].textContent = `Board size: ${this.saves[count].size}x${this.saves[count].size}`;
     this.text[1].textContent = `Time: ${this.addZero(this.saves[count].minutes)} : ${this.addZero(this.saves[count].seconds)}`;
@@ -247,18 +250,19 @@ export default class Dom {
 
   moveChip(target, empty, gameBoardPosition) {
     const emptyPossition = empty.getBoundingClientRect();
-    target.style.top = `${emptyPossition.y - gameBoardPosition.y}px`;
-    target.style.left = `${emptyPossition.x - gameBoardPosition.x}px`;
+    const elem = target;
+    elem.style.top = `${emptyPossition.y - gameBoardPosition.y}px`;
+    elem.style.left = `${emptyPossition.x - gameBoardPosition.x}px`;
     setTimeout(() => {
-      this.removeMovableChip(target);
+      this.removeMovableChip(elem);
     }, 500);
   }
 
-  removeMovableChip(target){
-    const prevChip = document.querySelector(`[data-id="${target.dataset.id}"]`);
-    prevChip.style.opacity = 1;
+  removeMovableChip(target) {
+    this.prevChip = document.querySelector(`[data-id="${target.dataset.id}"]`);
+    this.prevChip.style.opacity = 1;
     target.remove();
-    prevChip.style.opacity = '';
+    this.prevChip.style.opacity = '';
   }
 }
 
